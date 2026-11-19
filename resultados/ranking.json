@@ -1,0 +1,1421 @@
+{
+  "generado": "2026-11-17 00:27",
+  "entorno": {
+    "sistema": "Linux 6.18.44-fc-v553",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "nucleosLogicos": 2,
+    "ramGB": 7.8,
+    "python": "3.13.18",
+    "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+    "maven": "no disponible (se compiló con javac)",
+    "sbt": "no disponible (se compiló con scalac)",
+    "dotnet": "8.0.134",
+    "flagsJVM": "-Xms256m -Xmx3g -XX:+UseG1GC",
+    "modoDotnet": "Release (dotnet build -c Release), InvariantGlobalization, TieredPGO",
+    "fecha": "2026-11-17 00:24",
+    "scala": "2.13.16 (compilado con scalac; sbt usa 2.13.14)",
+    "notas": "Servidor sin acceso a Maven Central/NuGet: Java con javac, Scala con scalac 2.13, C# con dotnet build -c Release; pruebas con un ejecutor mínimo compatible con JUnit/MUnit/xUnit"
+  },
+  "metodo": "minmax",
+  "pesos": {
+    "tiempo": 25,
+    "memoria": 20,
+    "rendimiento": 20,
+    "calidad": 15,
+    "confiabilidad": 10,
+    "funcional": 10
+  },
+  "nombresCriterios": {
+    "tiempo": "Tiempo de ejecución",
+    "memoria": "Consumo de memoria",
+    "rendimiento": "Rendimiento (throughput)",
+    "calidad": "Calidad de código",
+    "confiabilidad": "Confiabilidad",
+    "funcional": "Uso funcional"
+  },
+  "unidades": {
+    "tiempo": "ms (media geométrica de medianas)",
+    "memoria": "MB pico RSS (media geométrica)",
+    "rendimiento": "partidas/s (media geométrica)",
+    "calidad": "puntaje reglas 0-100",
+    "confiabilidad": "puntaje reglas 0-100",
+    "funcional": "puntaje reglas 0-100"
+  },
+  "lenguajes": {
+    "Java": {
+      "color": "#eb6834",
+      "colorOscuro": "#d95926"
+    },
+    "Scala": {
+      "color": "#2a78d6",
+      "colorOscuro": "#3987e5"
+    },
+    "C#": {
+      "color": "#1baf7a",
+      "colorOscuro": "#199e70"
+    }
+  },
+  "escenarios": [
+    {
+      "nombre": "pequeno",
+      "jugadores": 64
+    },
+    {
+      "nombre": "mediano",
+      "jugadores": 1024
+    },
+    {
+      "nombre": "grande",
+      "jugadores": 16384
+    },
+    {
+      "nombre": "muy_grande",
+      "jugadores": 131072
+    }
+  ],
+  "porEscenario": {
+    "pequeno": {
+      "Java": {
+        "tiempoMs": 6.928,
+        "mediaMs": 6.8964,
+        "desviacionMs": 2.0483,
+        "minMs": 4.1877,
+        "maxMs": 11.4461,
+        "fasesMs": {
+          "carga": 1.4609,
+          "matchmaking": 0.0763,
+          "eliminacion": 0.5844,
+          "liga": 1.1537,
+          "estadisticas": 0.4434
+        },
+        "memoriaMB": 79.17,
+        "heapMB": 13.5287,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 300087.7529,
+        "jugadoresPorSeg": 9237.9106,
+        "partidas": 2079,
+        "validos": 64,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4",
+        "invariantesOk": true,
+        "version": "Java 21.0.12.1 (OpenJDK 64-Bit Server VM)",
+        "paredSeg": 0.4508
+      },
+      "Scala": {
+        "tiempoMs": 6.1241,
+        "mediaMs": 7.0081,
+        "desviacionMs": 2.2644,
+        "minMs": 4.7378,
+        "maxMs": 10.6426,
+        "fasesMs": {
+          "carga": 1.3497,
+          "matchmaking": 0.0915,
+          "eliminacion": 0.2499,
+          "liga": 3.4862,
+          "estadisticas": 0.5075
+        },
+        "memoriaMB": 86.07,
+        "heapMB": 18.9259,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 339475.7655,
+        "jugadoresPorSeg": 10450.4324,
+        "partidas": 2079,
+        "validos": 64,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4",
+        "invariantesOk": true,
+        "version": "Scala 2.13.16 (Java 21.0.12.1)",
+        "paredSeg": 0.4933
+      },
+      "C#": {
+        "tiempoMs": 1.9004,
+        "mediaMs": 1.8835,
+        "desviacionMs": 0.1965,
+        "minMs": 1.5429,
+        "maxMs": 2.1567,
+        "fasesMs": {
+          "carga": 0.1789,
+          "matchmaking": 0.0209,
+          "eliminacion": 0.0955,
+          "liga": 1.5354,
+          "estadisticas": 0.0554
+        },
+        "memoriaMB": 50.1,
+        "heapMB": 9.9955,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 1093980.2147,
+        "jugadoresPorSeg": 33677.1206,
+        "partidas": 2079,
+        "validos": 64,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4",
+        "invariantesOk": true,
+        "version": "C# / .NET 8.0.34",
+        "paredSeg": 0.1821
+      }
+    },
+    "mediano": {
+      "Java": {
+        "tiempoMs": 24.2457,
+        "mediaMs": 25.4809,
+        "desviacionMs": 6.4277,
+        "minMs": 13.3713,
+        "maxMs": 34.8805,
+        "fasesMs": {
+          "carga": 5.9616,
+          "matchmaking": 0.3947,
+          "eliminacion": 1.6918,
+          "liga": 14.3798,
+          "estadisticas": 1.2411
+        },
+        "memoriaMB": 224.28,
+        "heapMB": 153.8816,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 1372571.2713,
+        "jugadoresPorSeg": 42234.2313,
+        "partidas": 33279,
+        "validos": 1024,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630",
+        "invariantesOk": true,
+        "version": "Java 21.0.12.1 (OpenJDK 64-Bit Server VM)",
+        "paredSeg": 0.8824
+      },
+      "Scala": {
+        "tiempoMs": 27.2912,
+        "mediaMs": 26.4842,
+        "desviacionMs": 5.5831,
+        "minMs": 16.4525,
+        "maxMs": 36.3671,
+        "fasesMs": {
+          "carga": 5.4574,
+          "matchmaking": 0.3802,
+          "eliminacion": 1.1375,
+          "liga": 17.6849,
+          "estadisticas": 2.0199
+        },
+        "memoriaMB": 309.75,
+        "heapMB": 185.2316,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 1219404.3474,
+        "jugadoresPorSeg": 37521.2612,
+        "partidas": 33279,
+        "validos": 1024,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630",
+        "invariantesOk": true,
+        "version": "Scala 2.13.16 (Java 21.0.12.1)",
+        "paredSeg": 1.0285
+      },
+      "C#": {
+        "tiempoMs": 28.2143,
+        "mediaMs": 28.5297,
+        "desviacionMs": 6.4999,
+        "minMs": 20.7854,
+        "maxMs": 39.0564,
+        "fasesMs": {
+          "carga": 1.9236,
+          "matchmaking": 0.3147,
+          "eliminacion": 1.1382,
+          "liga": 23.7448,
+          "estadisticas": 0.5307
+        },
+        "memoriaMB": 173.98,
+        "heapMB": 126.4952,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 1179506.1733,
+        "jugadoresPorSeg": 36293.5882,
+        "partidas": 33279,
+        "validos": 1024,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630",
+        "invariantesOk": true,
+        "version": "C# / .NET 8.0.34",
+        "paredSeg": 0.5475
+      }
+    },
+    "grande": {
+      "Java": {
+        "tiempoMs": 148.2501,
+        "mediaMs": 165.2467,
+        "desviacionMs": 33.8477,
+        "minMs": 135.7127,
+        "maxMs": 230.7643,
+        "fasesMs": {
+          "carga": 19.9854,
+          "matchmaking": 5.0904,
+          "eliminacion": 9.8747,
+          "liga": 103.249,
+          "estadisticas": 8.97
+        },
+        "memoriaMB": 598.97,
+        "heapMB": 374.0914,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 3591761.4653,
+        "jugadoresPorSeg": 110515.9449,
+        "partidas": 532479,
+        "validos": 16384,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7",
+        "invariantesOk": true,
+        "version": "Java 21.0.12.1 (OpenJDK 64-Bit Server VM)",
+        "paredSeg": 3.3027
+      },
+      "Scala": {
+        "tiempoMs": 250.483,
+        "mediaMs": 291.6818,
+        "desviacionMs": 80.8276,
+        "minMs": 232.009,
+        "maxMs": 455.5689,
+        "fasesMs": {
+          "carga": 27.0049,
+          "matchmaking": 7.0731,
+          "eliminacion": 11.1757,
+          "liga": 186.0925,
+          "estadisticas": 15.6092
+        },
+        "memoriaMB": 1057.48,
+        "heapMB": 647.9343,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 2125809.1026,
+        "jugadoresPorSeg": 65409.6337,
+        "partidas": 532479,
+        "validos": 16384,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7",
+        "invariantesOk": true,
+        "version": "Scala 2.13.16 (Java 21.0.12.1)",
+        "paredSeg": 5.2271
+      },
+      "C#": {
+        "tiempoMs": 261.9812,
+        "mediaMs": 252.1435,
+        "desviacionMs": 29.1358,
+        "minMs": 189.469,
+        "maxMs": 280.2033,
+        "fasesMs": {
+          "carga": 9.518,
+          "matchmaking": 4.2191,
+          "eliminacion": 13.1705,
+          "liga": 193.5016,
+          "estadisticas": 4.6047
+        },
+        "memoriaMB": 187.68,
+        "heapMB": 129.2647,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 2032508.4395,
+        "jugadoresPorSeg": 62538.8387,
+        "partidas": 532479,
+        "validos": 16384,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7",
+        "invariantesOk": true,
+        "version": "C# / .NET 8.0.34",
+        "paredSeg": 4.0012
+      }
+    },
+    "muy_grande": {
+      "Java": {
+        "tiempoMs": 1323.6429,
+        "mediaMs": 1356.4298,
+        "desviacionMs": 147.1296,
+        "minMs": 1188.2496,
+        "maxMs": 1673.5452,
+        "fasesMs": {
+          "carga": 189.9948,
+          "matchmaking": 53.1486,
+          "eliminacion": 93.1669,
+          "liga": 851.3127,
+          "estadisticas": 82.5781
+        },
+        "memoriaMB": 2129.98,
+        "heapMB": 1555.337,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 3218269.0408,
+        "jugadoresPorSeg": 99023.686,
+        "partidas": 4259839,
+        "validos": 131072,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d",
+        "invariantesOk": true,
+        "version": "Java 21.0.12.1 (OpenJDK 64-Bit Server VM)",
+        "paredSeg": 20.7356
+      },
+      "Scala": {
+        "tiempoMs": 2111.8255,
+        "mediaMs": 2190.6386,
+        "desviacionMs": 245.3097,
+        "minMs": 1955.0633,
+        "maxMs": 2745.5652,
+        "fasesMs": {
+          "carga": 269.015,
+          "matchmaking": 64.3104,
+          "eliminacion": 101.6285,
+          "liga": 1501.1193,
+          "estadisticas": 150.5475
+        },
+        "memoriaMB": 2695.75,
+        "heapMB": 1686.7698,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 2017135.9094,
+        "jugadoresPorSeg": 62065.7349,
+        "partidas": 4259839,
+        "validos": 131072,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d",
+        "invariantesOk": true,
+        "version": "Scala 2.13.16 (Java 21.0.12.1)",
+        "paredSeg": 32.6274
+      },
+      "C#": {
+        "tiempoMs": 1986.3136,
+        "mediaMs": 2001.8979,
+        "desviacionMs": 139.258,
+        "minMs": 1833.2531,
+        "maxMs": 2307.4163,
+        "fasesMs": {
+          "carga": 184.7602,
+          "matchmaking": 42.3651,
+          "eliminacion": 147.6156,
+          "liga": 1576.1656,
+          "estadisticas": 33.7488
+        },
+        "memoriaMB": 266.76,
+        "heapMB": 177.4028,
+        "memoriaFuente": "externa (RSS)",
+        "partidasPorSeg": 2144595.3952,
+        "jugadoresPorSeg": 65987.5661,
+        "partidas": 4259839,
+        "validos": 131072,
+        "runs": 10,
+        "warmup": 3,
+        "hash": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d",
+        "invariantesOk": true,
+        "version": "C# / .NET 8.0.34",
+        "paredSeg": 28.9403
+      }
+    }
+  },
+  "equivalencia": {
+    "pequeno": {
+      "hashes": {
+        "Java": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4",
+        "Scala": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4",
+        "C#": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4"
+      },
+      "referencia": "6bd9c41ea521b51123cfc15f8b530d3d623ad737c2663638aed46b5b89bc1fd4",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    },
+    "mediano": {
+      "hashes": {
+        "Java": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630",
+        "Scala": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630",
+        "C#": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630"
+      },
+      "referencia": "6249ed99c236fc9a75a83999490a141d80a68a2db6b9d4525c9ecdf7137d4630",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    },
+    "grande": {
+      "hashes": {
+        "Java": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7",
+        "Scala": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7",
+        "C#": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7"
+      },
+      "referencia": "398b045c96d3bbebfbec2a0b2454ce906606b8b8418fe372b3bd61f388c126a7",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    },
+    "muy_grande": {
+      "hashes": {
+        "Java": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d",
+        "Scala": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d",
+        "C#": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d"
+      },
+      "referencia": "947605dfea658a7002f2d9c27807575cc079d22c654795c02f59285772a8754d",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    },
+    "sucio": {
+      "hashes": {
+        "Java": "5611dc987ed3a76b2e952653e48542a35f04a6e8f264b31e73d0ee13c2ac4e3b",
+        "Scala": "5611dc987ed3a76b2e952653e48542a35f04a6e8f264b31e73d0ee13c2ac4e3b",
+        "C#": "5611dc987ed3a76b2e952653e48542a35f04a6e8f264b31e73d0ee13c2ac4e3b"
+      },
+      "referencia": "5611dc987ed3a76b2e952653e48542a35f04a6e8f264b31e73d0ee13c2ac4e3b",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    },
+    "minimo": {
+      "hashes": {
+        "Java": "5b6410dcbbab542417444ef2602effa561d3315b40ac0f4e471c983946b82885",
+        "Scala": "5b6410dcbbab542417444ef2602effa561d3315b40ac0f4e471c983946b82885",
+        "C#": "5b6410dcbbab542417444ef2602effa561d3315b40ac0f4e471c983946b82885"
+      },
+      "referencia": "5b6410dcbbab542417444ef2602effa561d3315b40ac0f4e471c983946b82885",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    },
+    "inexistente": {
+      "hashes": {
+        "Java": "e011c81bffcf640f3d4e0a699dc30c025e88e1d0de1be2163a64050ce4726b61",
+        "Scala": "e011c81bffcf640f3d4e0a699dc30c025e88e1d0de1be2163a64050ce4726b61",
+        "C#": "e011c81bffcf640f3d4e0a699dc30c025e88e1d0de1be2163a64050ce4726b61"
+      },
+      "referencia": "e011c81bffcf640f3d4e0a699dc30c025e88e1d0de1be2163a64050ce4726b61",
+      "coinciden": {
+        "Java": true,
+        "Scala": true,
+        "C#": true
+      }
+    }
+  },
+  "criterios": {
+    "tiempo": {
+      "Java": {
+        "crudo": 75.771,
+        "normalizado": 75.0,
+        "ponderado": 18.75
+      },
+      "Scala": {
+        "crudo": 96.967,
+        "normalizado": 12.34,
+        "ponderado": 3.08
+      },
+      "C#": {
+        "crudo": 72.679,
+        "normalizado": 28.98,
+        "ponderado": 7.25
+      }
+    },
+    "memoria": {
+      "Java": {
+        "crudo": 387.956,
+        "normalizado": 39.54,
+        "ponderado": 7.91
+      },
+      "Scala": {
+        "crudo": 525.054,
+        "normalizado": 0.0,
+        "ponderado": 0.0
+      },
+      "C#": {
+        "crudo": 144.534,
+        "normalizado": 100.0,
+        "ponderado": 20.0
+      }
+    },
+    "rendimiento": {
+      "Java": {
+        "crudo": 1477162.427,
+        "normalizado": 75.0,
+        "ponderado": 15.0
+      },
+      "Scala": {
+        "crudo": 1154260.901,
+        "normalizado": 7.9,
+        "ponderado": 1.58
+      },
+      "C#": {
+        "crudo": 1540004.015,
+        "normalizado": 27.65,
+        "ponderado": 5.53
+      }
+    },
+    "calidad": {
+      "Java": {
+        "crudo": 93.04,
+        "normalizado": 93.04,
+        "ponderado": 13.96
+      },
+      "Scala": {
+        "crudo": 91.99,
+        "normalizado": 91.99,
+        "ponderado": 13.8
+      },
+      "C#": {
+        "crudo": 99.17,
+        "normalizado": 99.17,
+        "ponderado": 14.88
+      }
+    },
+    "funcional": {
+      "Java": {
+        "crudo": 100.0,
+        "normalizado": 100.0,
+        "ponderado": 10.0
+      },
+      "Scala": {
+        "crudo": 93.92,
+        "normalizado": 93.92,
+        "ponderado": 9.39
+      },
+      "C#": {
+        "crudo": 100.0,
+        "normalizado": 100.0,
+        "ponderado": 10.0
+      }
+    },
+    "confiabilidad": {
+      "Java": {
+        "crudo": 100.0,
+        "normalizado": 100.0,
+        "ponderado": 10.0
+      },
+      "Scala": {
+        "crudo": 100.0,
+        "normalizado": 100.0,
+        "ponderado": 10.0
+      },
+      "C#": {
+        "crudo": 100.0,
+        "normalizado": 100.0,
+        "ponderado": 10.0
+      }
+    }
+  },
+  "ranking": [
+    {
+      "posicion": 1,
+      "lenguaje": "Java",
+      "total": 75.61,
+      "ponderados": {
+        "tiempo": 18.75,
+        "memoria": 7.91,
+        "rendimiento": 15.0,
+        "calidad": 13.96,
+        "confiabilidad": 10.0,
+        "funcional": 10.0
+      }
+    },
+    {
+      "posicion": 2,
+      "lenguaje": "C#",
+      "total": 67.65,
+      "ponderados": {
+        "tiempo": 7.25,
+        "memoria": 20.0,
+        "rendimiento": 5.53,
+        "calidad": 14.88,
+        "confiabilidad": 10.0,
+        "funcional": 10.0
+      }
+    },
+    {
+      "posicion": 3,
+      "lenguaje": "Scala",
+      "total": 37.86,
+      "ponderados": {
+        "tiempo": 3.08,
+        "memoria": 0.0,
+        "rendimiento": 1.58,
+        "calidad": 13.8,
+        "confiabilidad": 10.0,
+        "funcional": 9.39
+      }
+    }
+  ],
+  "ganador": "Java",
+  "sensibilidad": {
+    "variaciones": [
+      {
+        "criterio": "tiempo",
+        "delta": 5,
+        "pesos": {
+          "tiempo": 30,
+          "memoria": 18.67,
+          "rendimiento": 18.67,
+          "calidad": 14.0,
+          "confiabilidad": 9.33,
+          "funcional": 9.33
+        },
+        "totales": {
+          "Java": 75.57,
+          "Scala": 36.15,
+          "C#": 65.07
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "tiempo",
+        "delta": -5,
+        "pesos": {
+          "tiempo": 20,
+          "memoria": 21.33,
+          "rendimiento": 21.33,
+          "calidad": 16.0,
+          "confiabilidad": 10.67,
+          "funcional": 10.67
+        },
+        "totales": {
+          "Java": 75.65,
+          "Scala": 39.56,
+          "C#": 70.23
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "memoria",
+        "delta": 5,
+        "pesos": {
+          "tiempo": 23.44,
+          "memoria": 25,
+          "rendimiento": 18.75,
+          "calidad": 14.06,
+          "confiabilidad": 9.38,
+          "funcional": 9.38
+        },
+        "totales": {
+          "Java": 73.36,
+          "Scala": 35.49,
+          "C#": 69.67
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "memoria",
+        "delta": -5,
+        "pesos": {
+          "tiempo": 26.56,
+          "memoria": 15,
+          "rendimiento": 21.25,
+          "calidad": 15.94,
+          "confiabilidad": 10.62,
+          "funcional": 10.62
+        },
+        "totales": {
+          "Java": 77.87,
+          "Scala": 40.22,
+          "C#": 65.63
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "rendimiento",
+        "delta": 5,
+        "pesos": {
+          "tiempo": 23.44,
+          "memoria": 18.75,
+          "rendimiento": 25,
+          "calidad": 14.06,
+          "confiabilidad": 9.38,
+          "funcional": 9.38
+        },
+        "totales": {
+          "Java": 75.58,
+          "Scala": 35.98,
+          "C#": 65.15
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "rendimiento",
+        "delta": -5,
+        "pesos": {
+          "tiempo": 26.56,
+          "memoria": 21.25,
+          "rendimiento": 15,
+          "calidad": 15.94,
+          "confiabilidad": 10.62,
+          "funcional": 10.62
+        },
+        "totales": {
+          "Java": 75.65,
+          "Scala": 39.73,
+          "C#": 70.15
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "calidad",
+        "delta": 5,
+        "pesos": {
+          "tiempo": 23.53,
+          "memoria": 18.82,
+          "rendimiento": 18.82,
+          "calidad": 20,
+          "confiabilidad": 9.41,
+          "funcional": 9.41
+        },
+        "totales": {
+          "Java": 76.64,
+          "Scala": 41.04,
+          "C#": 69.5
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "calidad",
+        "delta": -5,
+        "pesos": {
+          "tiempo": 26.47,
+          "memoria": 21.18,
+          "rendimiento": 21.18,
+          "calidad": 10,
+          "confiabilidad": 10.59,
+          "funcional": 10.59
+        },
+        "totales": {
+          "Java": 74.59,
+          "Scala": 34.67,
+          "C#": 65.8
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "confiabilidad",
+        "delta": 5,
+        "pesos": {
+          "tiempo": 23.61,
+          "memoria": 18.89,
+          "rendimiento": 18.89,
+          "calidad": 14.17,
+          "confiabilidad": 15,
+          "funcional": 9.44
+        },
+        "totales": {
+          "Java": 76.97,
+          "Scala": 41.31,
+          "C#": 69.45
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "confiabilidad",
+        "delta": -5,
+        "pesos": {
+          "tiempo": 26.39,
+          "memoria": 21.11,
+          "rendimiento": 21.11,
+          "calidad": 15.83,
+          "confiabilidad": 5,
+          "funcional": 10.56
+        },
+        "totales": {
+          "Java": 74.26,
+          "Scala": 34.4,
+          "C#": 65.85
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "funcional",
+        "delta": 5,
+        "pesos": {
+          "tiempo": 23.61,
+          "memoria": 18.89,
+          "rendimiento": 18.89,
+          "calidad": 14.17,
+          "confiabilidad": 9.44,
+          "funcional": 15
+        },
+        "totales": {
+          "Java": 76.97,
+          "Scala": 40.97,
+          "C#": 69.45
+        },
+        "ganador": "Java",
+        "cambia": false
+      },
+      {
+        "criterio": "funcional",
+        "delta": -5,
+        "pesos": {
+          "tiempo": 26.39,
+          "memoria": 21.11,
+          "rendimiento": 21.11,
+          "calidad": 15.83,
+          "confiabilidad": 10.56,
+          "funcional": 5
+        },
+        "totales": {
+          "Java": 74.26,
+          "Scala": 34.74,
+          "C#": 65.85
+        },
+        "ganador": "Java",
+        "cambia": false
+      }
+    ],
+    "ganadorCambia": false,
+    "margen": 7.96,
+    "metodoAlterno": "proporcional",
+    "ganadorMetodoAlterno": "C#",
+    "totalesMetodoAlterno": {
+      "Java": 80.03,
+      "Scala": 67.49,
+      "C#": 89.66
+    }
+  },
+  "confiabilidad": {
+    "Java": {
+      "pruebas": {
+        "total": 23,
+        "aprobadas": 23,
+        "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+      },
+      "pctPruebas": 100.0,
+      "pctErrores": 100.0,
+      "chequeosErrores": "18/18",
+      "fallosErrores": [],
+      "pctHash": 100.0,
+      "puntaje": 100.0
+    },
+    "Scala": {
+      "pruebas": {
+        "total": 23,
+        "aprobadas": 23,
+        "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+      },
+      "pctPruebas": 100.0,
+      "pctErrores": 100.0,
+      "chequeosErrores": "18/18",
+      "fallosErrores": [],
+      "pctHash": 100.0,
+      "puntaje": 100.0
+    },
+    "C#": {
+      "pruebas": {
+        "total": 23,
+        "aprobadas": 23,
+        "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+      },
+      "pctPruebas": 100.0,
+      "pctErrores": 100.0,
+      "chequeosErrores": "18/18",
+      "fallosErrores": [],
+      "pctHash": 100.0,
+      "puntaje": 100.0
+    }
+  },
+  "calidad": {
+    "Java": {
+      "archivos": 24,
+      "loc": 738,
+      "funciones": 66,
+      "complejidadPromedio": 2.11,
+      "profundidadMaxima": 4,
+      "operacionesFuncionales": 238,
+      "lambdas": 76,
+      "construccionesImperativas": 0,
+      "ratioFuncional": 100.0,
+      "duplicacionPct": 0.0,
+      "efectosFueraDeBordes": 0,
+      "efectosDetalle": [],
+      "exigidas": {
+        "stream()": true,
+        "map": true,
+        "filter": true,
+        "flatMap": true,
+        "reduce": true,
+        "collect": true,
+        "Collectors.groupingBy": true,
+        "Collectors.partitioningBy": true,
+        "Collectors.averaging*": true,
+        "Collectors.counting": true,
+        "sorted(Comparator)": true,
+        "limit": true,
+        "mapToInt/IntStream.range": true,
+        "anyMatch/allMatch": true,
+        "Optional": true,
+        "lambda": true,
+        "referencia a método (::)": true,
+        "Function/Predicate/BiFunction": true,
+        "Comparator": true,
+        "record": true
+      },
+      "cumplimiento": 100.0,
+      "subpuntajesCalidad": {
+        "loc": 59.62,
+        "complejidad": 98.62,
+        "anidamiento": 100.0,
+        "ratioFuncional": 100.0,
+        "duplicacion": 100.0,
+        "efectos": 100.0
+      },
+      "puntajeCalidad": 93.04,
+      "puntajeFuncional": 100.0
+    },
+    "Scala": {
+      "archivos": 13,
+      "loc": 586,
+      "funciones": 99,
+      "complejidadPromedio": 2.88,
+      "profundidadMaxima": 4,
+      "operacionesFuncionales": 70,
+      "lambdas": 60,
+      "construccionesImperativas": 18,
+      "ratioFuncional": 87.84,
+      "duplicacionPct": 0.0,
+      "efectosFueraDeBordes": 0,
+      "efectosDetalle": [],
+      "cumplimiento": 100.0,
+      "violacionesProhibido": 0,
+      "subpuntajesCalidad": {
+        "loc": 75.09,
+        "complejidad": 89.0,
+        "anidamiento": 100.0,
+        "ratioFuncional": 87.84,
+        "duplicacion": 100.0,
+        "efectos": 100.0
+      },
+      "puntajeCalidad": 91.99,
+      "puntajeFuncional": 93.92
+    },
+    "C#": {
+      "archivos": 15,
+      "loc": 440,
+      "funciones": 50,
+      "complejidadPromedio": 2.4,
+      "profundidadMaxima": 3,
+      "operacionesFuncionales": 140,
+      "lambdas": 111,
+      "construccionesImperativas": 0,
+      "ratioFuncional": 100.0,
+      "duplicacionPct": 0.0,
+      "efectosFueraDeBordes": 0,
+      "efectosDetalle": [],
+      "exigidas": {
+        "Select": true,
+        "Where": true,
+        "Aggregate": true,
+        "GroupBy": true,
+        "OrderBy/ThenBy": true,
+        "Take": true,
+        "Skip": true,
+        "Zip": true,
+        "SelectMany": true,
+        "Any/All": true,
+        "Sum/Average/Count": true,
+        "ToDictionary": true,
+        "lambda": true,
+        "Func<>/Action<>/Predicate<>": true,
+        "record": true,
+        "switch expression": true,
+        "tuplas": true,
+        "pattern matching": true
+      },
+      "cumplimiento": 100.0,
+      "subpuntajesCalidad": {
+        "loc": 100.0,
+        "complejidad": 95.0,
+        "anidamiento": 100.0,
+        "ratioFuncional": 100.0,
+        "duplicacion": 100.0,
+        "efectos": 100.0
+      },
+      "puntajeCalidad": 99.17,
+      "puntajeFuncional": 100.0
+    }
+  },
+  "escaneoScala": {
+    "violaciones": [],
+    "totalViolaciones": 0,
+    "cobertura": {
+      "val": {
+        "usos": 143,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:20",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:21",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:24",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:25"
+        ]
+      },
+      "var": {
+        "usos": 11,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Elo.scala:24",
+          "scala/src/main/scala/torneos/Infraestructura.scala:25",
+          "scala/src/main/scala/torneos/Infraestructura.scala:26",
+          "scala/src/main/scala/torneos/Infraestructura.scala:27"
+        ]
+      },
+      "def": {
+        "usos": 99,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:7",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:11",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:17",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:31"
+        ]
+      },
+      "return": {
+        "usos": 1,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Validacion.scala:29"
+        ]
+      },
+      "lambda (x: T) => ...": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Listas.scala:20",
+          "scala/src/main/scala/torneos/Listas.scala:35",
+          "scala/src/main/scala/torneos/Main.scala:44"
+        ]
+      },
+      "if": {
+        "usos": 55,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:42",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:44",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:45",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:46"
+        ]
+      },
+      "else if": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Estadisticas.scala:18",
+          "scala/src/main/scala/torneos/Estadisticas.scala:19",
+          "scala/src/main/scala/torneos/Liga.scala:58"
+        ]
+      },
+      "else": {
+        "usos": 36,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:42",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:44",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:45",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:46"
+        ]
+      },
+      "match": {
+        "usos": 29,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:18",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:32",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:38",
+          "scala/src/main/scala/torneos/Estadisticas.scala:29"
+        ]
+      },
+      "for": {
+        "usos": 2,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:141",
+          "scala/src/main/scala/torneos/Infraestructura.scala:271"
+        ]
+      },
+      "while": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:28",
+          "scala/src/main/scala/torneos/Infraestructura.scala:98",
+          "scala/src/main/scala/torneos/Infraestructura.scala:104"
+        ]
+      },
+      "do-while": {
+        "usos": 1,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Main.scala:23"
+        ]
+      },
+      "Array": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:46",
+          "scala/src/main/scala/torneos/Infraestructura.scala:269",
+          "scala/src/main/scala/torneos/Main.scala:10"
+        ]
+      },
+      "List": {
+        "usos": 63,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:11",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:17",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:18",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:31"
+        ]
+      },
+      "Set": {
+        "usos": 2,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Validacion.scala:14",
+          "scala/src/main/scala/torneos/Validacion.scala:37"
+        ]
+      },
+      "Map": {
+        "usos": 12,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Estadisticas.scala:23",
+          "scala/src/main/scala/torneos/Estadisticas.scala:24",
+          "scala/src/main/scala/torneos/Estadisticas.scala:29",
+          "scala/src/main/scala/torneos/Estadisticas.scala:34"
+        ]
+      },
+      "Tuple": {
+        "usos": 9,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:115",
+          "scala/src/main/scala/torneos/Infraestructura.scala:216",
+          "scala/src/main/scala/torneos/Infraestructura.scala:217",
+          "scala/src/main/scala/torneos/Liga.scala:49"
+        ]
+      },
+      "map": {
+        "usos": 41,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:21",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:27",
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:28",
+          "scala/src/main/scala/torneos/Estadisticas.scala:24"
+        ]
+      },
+      "filter": {
+        "usos": 6,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:26",
+          "scala/src/main/scala/torneos/Infraestructura.scala:115",
+          "scala/src/main/scala/torneos/Infraestructura.scala:159",
+          "scala/src/main/scala/torneos/Validacion.scala:11"
+        ]
+      },
+      "reduce": {
+        "usos": 1,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Estadisticas.scala:60"
+        ]
+      },
+      "fold": {
+        "usos": 16,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:21",
+          "scala/src/main/scala/torneos/Estadisticas.scala:52",
+          "scala/src/main/scala/torneos/Infraestructura.scala:153",
+          "scala/src/main/scala/torneos/Infraestructura.scala:156"
+        ]
+      },
+      "foreach": {
+        "usos": 1,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Main.scala:53"
+        ]
+      },
+      "class": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Elo.scala:23",
+          "scala/src/main/scala/torneos/Infraestructura.scala:73",
+          "scala/src/main/scala/torneos/Modelo.scala:50"
+        ]
+      },
+      "object": {
+        "usos": 17,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:5",
+          "scala/src/main/scala/torneos/Elo.scala:6",
+          "scala/src/main/scala/torneos/Elo.scala:34",
+          "scala/src/main/scala/torneos/Estadisticas.scala:6"
+        ]
+      },
+      "case class": {
+        "usos": 20,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:9",
+          "scala/src/main/scala/torneos/Estadisticas.scala:11",
+          "scala/src/main/scala/torneos/Liga.scala:12",
+          "scala/src/main/scala/torneos/Liga.scala:17"
+        ]
+      },
+      "trait": {
+        "usos": 2,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Elo.scala:17",
+          "scala/src/main/scala/torneos/Modelo.scala:60"
+        ]
+      },
+      "abstract class": {
+        "usos": 2,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Modelo.scala:55",
+          "scala/src/main/scala/torneos/Modelo.scala:72"
+        ]
+      },
+      "try": {
+        "usos": 7,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:24",
+          "scala/src/main/scala/torneos/Infraestructura.scala:79",
+          "scala/src/main/scala/torneos/Infraestructura.scala:113",
+          "scala/src/main/scala/torneos/Infraestructura.scala:259"
+        ]
+      },
+      "catch": {
+        "usos": 5,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:34",
+          "scala/src/main/scala/torneos/Infraestructura.scala:120",
+          "scala/src/main/scala/torneos/Pipeline.scala:23",
+          "scala/src/main/scala/torneos/Pipeline.scala:31"
+        ]
+      },
+      "finally": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:36",
+          "scala/src/main/scala/torneos/Infraestructura.scala:81",
+          "scala/src/main/scala/torneos/Infraestructura.scala:261"
+        ]
+      },
+      "throw": {
+        "usos": 9,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Infraestructura.scala:22",
+          "scala/src/main/scala/torneos/Infraestructura.scala:35",
+          "scala/src/main/scala/torneos/Infraestructura.scala:48",
+          "scala/src/main/scala/torneos/Infraestructura.scala:53"
+        ]
+      },
+      "import": {
+        "usos": 7,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Elo.scala:3",
+          "scala/src/main/scala/torneos/Estadisticas.scala:3",
+          "scala/src/main/scala/torneos/Infraestructura.scala:3",
+          "scala/src/main/scala/torneos/Infraestructura.scala:4"
+        ]
+      },
+      "package": {
+        "usos": 13,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:1",
+          "scala/src/main/scala/torneos/Elo.scala:1",
+          "scala/src/main/scala/torneos/Estadisticas.scala:1",
+          "scala/src/main/scala/torneos/Infraestructura.scala:1"
+        ]
+      },
+      "extends": {
+        "usos": 6,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:5",
+          "scala/src/main/scala/torneos/Elo.scala:23",
+          "scala/src/main/scala/torneos/Liga.scala:6",
+          "scala/src/main/scala/torneos/Modelo.scala:50"
+        ]
+      },
+      "with": {
+        "usos": 2,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:5",
+          "scala/src/main/scala/torneos/Liga.scala:6"
+        ]
+      },
+      "override": {
+        "usos": 3,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/EliminacionDirecta.scala:7",
+          "scala/src/main/scala/torneos/Elo.scala:31",
+          "scala/src/main/scala/torneos/Liga.scala:8"
+        ]
+      },
+      "new": {
+        "usos": 17,
+        "ubicaciones": [
+          "scala/src/main/scala/torneos/Elo.scala:44",
+          "scala/src/main/scala/torneos/Infraestructura.scala:21",
+          "scala/src/main/scala/torneos/Infraestructura.scala:22",
+          "scala/src/main/scala/torneos/Infraestructura.scala:23"
+        ]
+      }
+    },
+    "porcentajeCobertura": 100.0,
+    "construccionesUsadas": 37,
+    "construccionesTabla": 37,
+    "faltantes": [],
+    "marcadoresTabla": {
+      "with": 1,
+      "filter": 1,
+      "import": 1,
+      "var": 5,
+      "override": 1,
+      "reduce": 1,
+      "while": 1,
+      "finally": 1,
+      "Array": 1,
+      "for": 1,
+      "Map": 1,
+      "else if": 1,
+      "List": 2,
+      "lambda": 1,
+      "fold": 1,
+      "Tuple": 1,
+      "else": 1,
+      "map": 1,
+      "do-while": 1,
+      "foreach": 1,
+      "package": 1,
+      "case class": 1,
+      "def": 1,
+      "object": 1,
+      "val": 1,
+      "match": 1,
+      "class": 1,
+      "extends": 1,
+      "abstract class": 1,
+      "trait": 1,
+      "if": 1,
+      "throw": 1,
+      "new": 1,
+      "Set": 1,
+      "try": 1,
+      "catch": 1,
+      "return": 1
+    }
+  },
+  "pruebas": {
+    "Java": {
+      "total": 23,
+      "aprobadas": 23,
+      "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+    },
+    "Scala": {
+      "total": 23,
+      "aprobadas": 23,
+      "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+    },
+    "C#": {
+      "total": 23,
+      "aprobadas": 23,
+      "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+    }
+  }
+}

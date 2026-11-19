@@ -1,0 +1,155 @@
+{
+  "Java": {
+    "pequeno": {
+      "codigoSalida": 0,
+      "paredSeg": 0.4508,
+      "rssPicoMB": 79.17,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/pequeno.csv | validos=64 errores=0 | elo promedio=1436.28 | invariantes=OK | campeon=42 | mediana total=6.93 ms | hash=6bd9c41ea521b511...",
+      "jsonGenerado": true
+    },
+    "mediano": {
+      "codigoSalida": 0,
+      "paredSeg": 0.8824,
+      "rssPicoMB": 224.28,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/mediano.csv | validos=1024 errores=0 | elo promedio=1396.05 | invariantes=OK | campeon=979 | mediana total=24.25 ms | hash=6249ed99c236fc9a...",
+      "jsonGenerado": true
+    },
+    "grande": {
+      "codigoSalida": 0,
+      "paredSeg": 3.3027,
+      "rssPicoMB": 598.97,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/grande.csv | validos=16384 errores=0 | elo promedio=1402.33 | invariantes=OK | campeon=12594 | mediana total=148.25 ms | hash=398b045c96d3bbeb...",
+      "jsonGenerado": true
+    },
+    "muy_grande": {
+      "codigoSalida": 0,
+      "paredSeg": 20.7356,
+      "rssPicoMB": 2129.98,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/muy_grande.csv | validos=131072 errores=0 | elo promedio=1395.86 | invariantes=OK | campeon=501 | mediana total=1323.64 ms | hash=947605dfea658a70...",
+      "jsonGenerado": true
+    },
+    "sucio": {
+      "codigoSalida": 0,
+      "paredSeg": 0.5136,
+      "rssPicoMB": 79.93,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/sucio.csv | validos=999 errores=30 | elo promedio=1399.12 | invariantes=OK | campeon=986 | mediana total=174.32 ms | hash=5611dc987ed3a76b...",
+      "jsonGenerado": true
+    },
+    "minimo": {
+      "codigoSalida": 0,
+      "paredSeg": 0.2684,
+      "rssPicoMB": 60.89,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/minimo.csv | validos=1 errores=3 | elo promedio=1500.00 | invariantes=OK | campeon=0 | mediana total=37.64 ms | hash=5b6410dcbbab5424...",
+      "jsonGenerado": true
+    },
+    "inexistente": {
+      "codigoSalida": 0,
+      "paredSeg": 0.2961,
+      "rssPicoMB": 59.32,
+      "salida": "[Java] /home/claude/proyecto-final/datos/escenarios/no_existe_este_archivo.csv | validos=0 errores=3 | elo promedio=0.00 | invariantes=OK | campeon=0 | mediana total=47.81 ms | hash=e011c81bffcf640f...",
+      "jsonGenerado": true
+    }
+  },
+  "Scala": {
+    "pequeno": {
+      "codigoSalida": 0,
+      "paredSeg": 0.4933,
+      "rssPicoMB": 86.07,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/pequeno.csv | validos=64 errores=0 | invariantes=OK | campeon=42 | mediana total=6.12 ms | hash=6bd9c41ea521b511...",
+      "jsonGenerado": true
+    },
+    "mediano": {
+      "codigoSalida": 0,
+      "paredSeg": 1.0285,
+      "rssPicoMB": 309.75,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/mediano.csv | validos=1024 errores=0 | invariantes=OK | campeon=979 | mediana total=27.29 ms | hash=6249ed99c236fc9a...",
+      "jsonGenerado": true
+    },
+    "grande": {
+      "codigoSalida": 0,
+      "paredSeg": 5.2271,
+      "rssPicoMB": 1057.48,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/grande.csv | validos=16384 errores=0 | invariantes=OK | campeon=12594 | mediana total=250.48 ms | hash=398b045c96d3bbeb...",
+      "jsonGenerado": true
+    },
+    "muy_grande": {
+      "codigoSalida": 0,
+      "paredSeg": 32.6274,
+      "rssPicoMB": 2695.75,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/muy_grande.csv | validos=131072 errores=0 | invariantes=OK | campeon=501 | mediana total=2111.83 ms | hash=947605dfea658a70...",
+      "jsonGenerado": true
+    },
+    "sucio": {
+      "codigoSalida": 0,
+      "paredSeg": 0.7163,
+      "rssPicoMB": 135.35,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/sucio.csv | validos=999 errores=30 | invariantes=OK | campeon=986 | mediana total=302.76 ms | hash=5611dc987ed3a76b...\n   - ELO_INVALIDO: Linea 2: Elo nulo\n   - LINEA_MALFORMADA: Linea 57: id invalido ''\n   - LINEA_MALFORMADA: Linea 76: nombre vacio\n   - ELO_INVALIDO: Linea 102: Elo nulo\n   - LINEA_MALFORMADA: Linea 105: id invalido '0'",
+      "jsonGenerado": true
+    },
+    "minimo": {
+      "codigoSalida": 0,
+      "paredSeg": 0.3878,
+      "rssPicoMB": 69.41,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/minimo.csv | validos=1 errores=3 | invariantes=OK | campeon=0 | mediana total=45.12 ms | hash=5b6410dcbbab5424...\n   - LINEA_MALFORMADA: Linea 3: se esperaban 3 campos y hay 1\n   - TORNEO_INSUFICIENTE: Eliminacion directa: se requieren al menos 2 jugadores (hay 1)\n   - TORNEO_INSUFICIENTE: Liga: se requieren al menos 2 jugadores (hay 1)",
+      "jsonGenerado": true
+    },
+    "inexistente": {
+      "codigoSalida": 0,
+      "paredSeg": 0.3704,
+      "rssPicoMB": 68.95,
+      "salida": "[Scala] /home/claude/proyecto-final/datos/escenarios/no_existe_este_archivo.csv | validos=0 errores=3 | invariantes=OK | campeon=0 | mediana total=14.37 ms | hash=e011c81bffcf640f...\n   - ARCHIVO_INEXISTENTE: No existe el archivo: /home/claude/proyecto-final/datos/escenarios/no_existe_este_archivo.csv\n   - TORNEO_INSUFICIENTE: Eliminacion directa: se requieren al menos 2 jugadores (hay 0)\n   - TORNEO_INSUFICIENTE: Liga: se requieren al menos 2 jugadores (hay 0)",
+      "jsonGenerado": true
+    }
+  },
+  "C#": {
+    "pequeno": {
+      "codigoSalida": 0,
+      "paredSeg": 0.1821,
+      "rssPicoMB": 50.1,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/pequeno.csv | validos=64 errores=0 | elo promedio=1436.28 | invariantes=OK | campeon=42 | mediana total=1.90 ms | hash=6bd9c41ea521b511...",
+      "jsonGenerado": true
+    },
+    "mediano": {
+      "codigoSalida": 0,
+      "paredSeg": 0.5475,
+      "rssPicoMB": 173.98,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/mediano.csv | validos=1024 errores=0 | elo promedio=1396.05 | invariantes=OK | campeon=979 | mediana total=28.21 ms | hash=6249ed99c236fc9a...",
+      "jsonGenerado": true
+    },
+    "grande": {
+      "codigoSalida": 0,
+      "paredSeg": 4.0012,
+      "rssPicoMB": 187.68,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/grande.csv | validos=16384 errores=0 | elo promedio=1402.33 | invariantes=OK | campeon=12594 | mediana total=261.98 ms | hash=398b045c96d3bbeb...",
+      "jsonGenerado": true
+    },
+    "muy_grande": {
+      "codigoSalida": 0,
+      "paredSeg": 28.9403,
+      "rssPicoMB": 266.76,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/muy_grande.csv | validos=131072 errores=0 | elo promedio=1395.86 | invariantes=OK | campeon=501 | mediana total=1986.31 ms | hash=947605dfea658a70...",
+      "jsonGenerado": true
+    },
+    "sucio": {
+      "codigoSalida": 0,
+      "paredSeg": 0.2229,
+      "rssPicoMB": 70.07,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/sucio.csv | validos=999 errores=30 | elo promedio=1399.12 | invariantes=OK | campeon=986 | mediana total=83.61 ms | hash=5611dc987ed3a76b...",
+      "jsonGenerado": true
+    },
+    "minimo": {
+      "codigoSalida": 0,
+      "paredSeg": 0.1831,
+      "rssPicoMB": 39.36,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/minimo.csv | validos=1 errores=3 | elo promedio=1500.00 | invariantes=OK | campeon=0 | mediana total=46.68 ms | hash=5b6410dcbbab5424...",
+      "jsonGenerado": true
+    },
+    "inexistente": {
+      "codigoSalida": 0,
+      "paredSeg": 0.1218,
+      "rssPicoMB": 37.44,
+      "salida": "[C#] /home/claude/proyecto-final/datos/escenarios/no_existe_este_archivo.csv | validos=0 errores=3 | elo promedio=0.00 | invariantes=OK | campeon=0 | mediana total=25.76 ms | hash=e011c81bffcf640f...",
+      "jsonGenerado": true
+    }
+  }
+}

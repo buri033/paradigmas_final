@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arena Bench · Java vs Scala vs C#</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f11; --surface:#1a1a19; --surface-2:#222220; --surface-3:#2b2b28; --line:#33332f;
+  --text:#f0efec; --text-2:#c3c2b7; --muted:#8a8984;
+  --java:#d95926; --scala:#3987e5; --csharp:#199e70; --gold:#eda100; --ok:#0ca30c; --bad:#e66767;
+  --radius:14px; --display:'Rajdhani','Segoe UI',sans-serif; --body:'Inter','Segoe UI',system-ui,sans-serif; --mono:'JetBrains Mono',Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.5}
+body{background:radial-gradient(1200px 500px at 85% -10%,rgba(57,135,229,.10),transparent 60%),radial-gradient(900px 420px at 0% 0%,rgba(217,89,38,.10),transparent 55%),var(--bg);min-height:100vh}
+a{color:var(--scala)}
+header{display:flex;align-items:center;gap:18px;padding:18px 32px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;background:rgba(15,15,17,.86);backdrop-filter:blur(10px)}
+.logo{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--java),var(--scala) 55%,var(--csharp));font-family:var(--display);font-weight:700;font-size:20px;color:#fff;box-shadow:0 6px 24px rgba(57,135,229,.25)}
+.titulo h1{font-family:var(--display);font-size:24px;margin:0;letter-spacing:.5px;font-weight:700}
+.titulo p{margin:0;color:var(--muted);font-size:12.5px}
+.estado{margin-left:auto;display:flex;align-items:center;gap:10px}
+.pill{padding:6px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:12px;color:var(--text-2);display:flex;gap:8px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.dot.on{background:var(--ok);box-shadow:0 0 0 4px rgba(12,163,12,.15);animation:pulso 1.4s infinite}
+@keyframes pulso{50%{box-shadow:0 0 0 7px rgba(12,163,12,0)}}
+nav{display:flex;gap:4px;padding:10px 32px;border-bottom:1px solid var(--line);overflow-x:auto;background:rgba(15,15,17,.6)}
+nav button{background:none;border:0;color:var(--text-2);font:600 13.5px var(--body);padding:9px 14px;border-radius:10px;cursor:pointer;white-space:nowrap}
+nav button:hover{background:var(--surface-2);color:var(--text)}
+nav button.activo{background:var(--surface-3);color:var(--text);box-shadow:inset 0 -2px 0 var(--gold)}
+main{padding:26px 32px 60px;max-width:1440px;margin:0 auto}
+section.vista{display:none;animation:entrar .25s ease}
+section.vista.activa{display:block}
+@keyframes entrar{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-family:var(--display);font-size:22px;margin:0 0 4px;font-weight:700;letter-spacing:.3px}
+h3{font-family:var(--display);font-size:17px;margin:0 0 10px;font-weight:700;letter-spacing:.3px}
+.sub{color:var(--muted);margin:0 0 18px;font-size:13px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1000px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.card.plano{background:var(--surface-2)}
+.kpi .v{font-family:var(--display);font-size:34px;font-weight:700;line-height:1.1}
+.kpi .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+.kpi .d{color:var(--text-2);font-size:12.5px;margin-top:4px}
+.btn{font:600 13.5px var(--body);border-radius:10px;padding:10px 16px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.btn:hover{background:var(--surface-3)}
+.btn.primario{background:linear-gradient(135deg,#3987e5,#2a6fc4);border-color:transparent;color:#fff;box-shadow:0 6px 20px rgba(57,135,229,.25)}
+.btn.primario:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.fila{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+label.chk{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);cursor:pointer;font-size:13px}
+label.chk input{accent-color:var(--scala)}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo span{font-size:12px;color:var(--muted)}
+input[type=number],select{background:var(--surface-2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:9px 10px;font:500 13.5px var(--body);width:110px}
+select{width:auto}
+.barra{height:10px;border-radius:999px;background:var(--surface-3);overflow:hidden}
+.barra>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--java),var(--scala),var(--csharp));transition:width .4s}
+.consola{font:12px/1.55 var(--mono);background:#0b0b0c;border:1px solid var(--line);border-radius:12px;padding:12px 14px;height:330px;overflow:auto;color:#c9c8bf;white-space:pre-wrap}
+.consola .ok{color:#62c462}.consola .err{color:var(--bad)}.consola .sec{color:var(--gold)}
+.herr{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.herr:last-child{border:0}.herr b{margin-left:auto;font-weight:600}
+.si{color:#62c462}.no{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{color:var(--muted);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
+th:first-child,td:first-child,th.izq,td.izq{text-align:left}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+.tabla-scroll{overflow:auto}
+.chip{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.chip i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.etq{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:600;background:var(--surface-3);color:var(--text-2)}
+.etq.ok{background:rgba(12,163,12,.14);color:#7bd77b}.etq.mal{background:rgba(230,103,103,.15);color:#f19a9a}
+.mono{font-family:var(--mono);font-size:12px}
+/* Podio */
+.podio{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:18px;align-items:end;margin:8px 0 22px}
+.puesto{border-radius:18px;padding:22px 18px 16px;text-align:center;position:relative;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.puesto::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--c) 0%,transparent 70%);opacity:.16}
+.puesto .medalla{font-family:var(--display);font-size:15px;font-weight:700;color:var(--muted);letter-spacing:1px}
+.puesto .nombre{font-family:var(--display);font-size:40px;font-weight:700;margin:4px 0 0;color:var(--text)}
+.puesto .total{font-family:var(--display);font-size:30px;font-weight:700;color:var(--c)}
+.puesto .base{height:var(--h);margin:14px -18px -16px;background:linear-gradient(180deg,var(--c),transparent);opacity:.35}
+.puesto.p1{border-color:rgba(237,161,0,.55);box-shadow:0 10px 40px rgba(237,161,0,.12)}
+.puesto.p1 .medalla{color:var(--gold)}
+.corona{font-size:30px;line-height:1}
+.ganador{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;background:linear-gradient(90deg,rgba(237,161,0,.14),transparent);border:1px solid rgba(237,161,0,.35);margin-bottom:18px}
+.ganador b{font-family:var(--display);font-size:20px}
+.slider{display:grid;grid-template-columns:150px 1fr 46px;gap:10px;align-items:center;margin:7px 0;font-size:13px}
+.slider input{accent-color:var(--gold);width:100%}
+/* gráficos */
+svg text{font-family:var(--body)}
+.leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--text-2);margin:2px 0 8px}
+#tip{position:fixed;pointer-events:none;background:#0b0b0c;border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:12px;color:var(--text);opacity:0;transition:opacity .12s;z-index:50;box-shadow:0 8px 30px rgba(0,0,0,.4);max-width:280px}
+/* Torneo */
+.llaves{display:flex;gap:14px;overflow:auto;padding-bottom:10px}
+.ronda{min-width:178px;display:flex;flex-direction:column}
+.ronda .partidos{flex:1;display:flex;flex-direction:column;justify-content:space-around;gap:8px}
+.ronda h4{margin:0 0 6px;font:700 13px var(--display);letter-spacing:.8px;color:var(--muted);text-transform:uppercase;text-align:center}
+.partido{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;font-size:12px;overflow:hidden}
+.partido div{display:flex;justify-content:space-between;padding:5px 9px;gap:8px;color:var(--text-2)}
+.partido div+div{border-top:1px solid var(--line)}
+.partido .gana{color:var(--text);font-weight:600;background:rgba(237,161,0,.08);box-shadow:inset 3px 0 0 var(--gold)}
+.partido .elo{color:var(--muted);font-family:var(--mono);font-size:11px}
+.campeon-card{text-align:center;padding:26px}
+.campeon-card .corona{font-size:44px}
+.campeon-card .n{font-family:var(--display);font-size:28px;font-weight:700}
+.nota{font-size:12.5px;color:var(--muted)}
+.formula{font-family:var(--mono);background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--text);font-size:12.5px;display:block;margin:8px 0}
+.paso{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+.paso:last-child{border:0}
+.paso .num{flex:none;width:30px;height:30px;border-radius:9px;background:var(--surface-3);display:grid;place-items:center;font-family:var(--display);font-weight:700;color:var(--gold)}
+.vacio{padding:40px;text-align:center;color:var(--muted)}
+.codigo{max-height:420px;overflow:auto;font:12px/1.5 var(--mono);background:#0b0b0c;border-radius:12px;border:1px solid var(--line);padding:12px;white-space:pre;color:#d8d7cf}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">AB</div>
+  <div class="titulo">
+    <h1>ARENA BENCH</h1>
+    <p>Matchmaking y torneos de e-sports · Java (Streams) vs Scala (tabla de clase) vs C# (LINQ)</p>
+  </div>
+  <div class="estado">
+    <span class="pill"><span class="dot" id="dot"></span><span id="etapa">Conectando…</span></span>
+  </div>
+</header>
+<nav id="nav">
+  <button data-v="panel" class="activo">⚙️ Panel de control</button>
+  <button data-v="ranking">🏆 Ranking</button>
+  <button data-v="rendimiento">⚡ Rendimiento</button>
+  <button data-v="equivalencia">🔐 Equivalencia</button>
+  <button data-v="calidad">🧪 Calidad y Scala</button>
+  <button data-v="torneo">🎮 Torneo</button>
+  <button data-v="sensibilidad">🎚️ Sensibilidad</button>
+  <button data-v="metodo">📘 Metodología</button>
+</nav>
+<main>
+
+<!-- ============================== PANEL ============================== -->
+<section class="vista activa" id="v-panel">
+  <h2>Panel de control</h2>
+  <p class="sub">Genera los datos, compila los tres proyectos, ejecuta pruebas y benchmark, y consolida el ranking automáticamente.</p>
+  <div class="grid g3">
+    <div class="card">
+      <h3>Herramientas detectadas</h3>
+      <div id="herramientas"></div>
+      <p class="nota" style="margin-top:10px">Si falta Maven o sbt, el orquestador compila con <span class="mono">javac</span> / <span class="mono">scalac</span>.</p>
+    </div>
+    <div class="card">
+      <h3>Escenarios</h3>
+      <div class="fila" id="escenarios"></div>
+      <p class="nota" style="margin-top:10px">Siempre se corren además los escenarios de confiabilidad: <b>sucio</b>, <b>mínimo</b> (1 jugador) e <b>inexistente</b>.</p>
+    </div>
+    <div class="card">
+      <h3>Parámetros de medición</h3>
+      <div class="fila">
+        <label class="campo"><span>Ejecuciones medidas</span><input type="number" id="runs" value="10" min="1" max="50"></label>
+        <label class="campo"><span>Calentamiento (JIT)</span><input type="number" id="warmup" value="3" min="0" max="20"></label>
+        <label class="campo"><span>Normalización</span><select id="metodo"><option value="minmax">min-max (enunciado)</option><option value="proporcional">proporcional</option></select></label>
+      </div>
+      <div class="fila" style="margin-top:12px">
+        <label class="chk"><input type="checkbox" id="pruebas" checked> Pruebas unitarias</label>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="fila" style="justify-content:space-between">
+      <div class="fila">
+        <button class="btn primario" id="btnEjecutar">▶ Ejecutar todo</button>
+        <button class="btn" id="btnGenerar">🗂 Generar datos</button>
+        <button class="btn" id="btnConsolidar">🔁 Recalcular ranking</button>
+      </div>
+      <div style="min-width:340px;flex:1;max-width:560px">
+        <div class="fila" style="justify-content:space-between;margin-bottom:6px"><span id="etapa2" class="nota">En espera</span><b id="pct">0 %</b></div>
+        <div class="barra"><i id="barra"></i></div>
+      </div>
+    </div>
+    <div class="consola" id="consola" style="margin-top:14px">Esperando instrucciones…</div>
+  </div>
+</section>
+
+<!-- ============================== RANKING ============================== -->
+<section class="vista" id="v-ranking">
+  <h2>Clasificación final</h2>
+  <p class="sub" id="rankingSub"></p>
+  <div id="ganador"></div>
+  <div class="podio" id="podio"></div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Puntaje por criterio (normalizado 0-100)</h3>
+      <div id="radar"></div>
+    </div>
+    <div class="card">
+      <h3>Simulador de pesos</h3>
+      <p class="nota" style="margin-top:-4px">Mueve los pesos y mira si cambia el ganador (se recalcula aquí mismo, con los puntajes normalizados).</p>
+      <div id="sliders"></div>
+      <div class="fila" style="margin-top:10px"><button class="btn" id="btnPesos">Restaurar pesos del enunciado</button><span id="simGanador" class="nota"></span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>Tabla de clasificación: métrica cruda → normalizada → ponderada</h3>
+    <div class="tabla-scroll"><table id="tablaRanking"></table></div>
+  </div>
+</section>
+
+<!-- ============================== RENDIMIENTO ============================== -->
+<section class="vista" id="v-rendimiento">
+  <h2>Rendimiento medido</h2>
+  <p class="sub">Mediana de las ejecuciones medidas (después del calentamiento). Memoria: pico del proceso medido desde el orquestador.</p>
+  <div class="grid g2">
+    <div class="card"><h3>Tiempo total por escenario</h3><div class="leyenda" data-ley></div><div id="gTiempo"></div></div>
+    <div class="card"><h3>Curva de escalabilidad</h3><div class="leyenda" data-ley></div><div id="gEscala"></div></div>
+    <div class="card"><h3>Memoria pico por escenario</h3><div class="leyenda" data-ley></div><div id="gMemoria"></div></div>
+    <div class="card"><h3>Partidas procesadas por segundo</h3><div class="leyenda" data-ley></div><div id="gThroughput"></div></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="fila" style="justify-content:space-between"><h3 style="margin:0">Tiempo por fase</h3><select id="selFase"></select></div>
+    <div class="leyenda" data-ley style="margin-top:8px"></div><div id="gFases"></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <h3>Estadística de las ejecuciones</h3>
+    <div class="tabla-scroll"><table id="tablaEsc"></table></div>
+  </div>
+</section>
+
+<!-- ============================== EQUIVALENCIA ============================== -->
+<section class="vista" id="v-equivalencia">
+  <h2>Equivalencia funcional</h2>
+  <p class="sub">Cada programa escribe un texto canónico (campeón, tablas, Elo finales, estadísticas…) y su SHA-256. Mismo hash = misma salida, byte a byte.</p>
+  <div class="grid g3" id="kpiEq"></div>
+  <div class="card" style="margin-top:16px"><div class="tabla-scroll"><table id="tablaEq"></table></div></div>
+  <div class="card plano" style="margin-top:16px">
+    <h3>¿Por qué coinciden?</h3>
+    <p class="nota">Los tres usan el <b>mismo LCG de 64 bits propio</b> (no el Random de cada lenguaje), el Elo se guarda en <b>centésimas enteras</b> para que las sumas sean exactas en cualquier orden, y el aleatorio de cada partida es una <b>función pura de (semilla, ronda, índice)</b>.</p>
+  </div>
+</section>
+
+<!-- ============================== CALIDAD ============================== -->
+<section class="vista" id="v-calidad">
+  <h2>Calidad de código, uso funcional y escáner de Scala</h2>
+  <p class="sub">Criterios cualitativos medidos con reglas explícitas y verificables (ver Metodología).</p>
+  <div class="grid g4" id="kpiScala"></div>
+  <div class="card" style="margin-top:16px"><h3>Métricas estáticas</h3><div class="tabla-scroll"><table id="tablaCalidad"></table></div></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card"><h3>Matriz de cobertura de la tabla de clase (Scala)</h3><div class="tabla-scroll" style="max-height:520px"><table id="tablaCobertura"></table></div></div>
+    <div class="card"><h3>Construcciones exigidas (Java Streams y C# LINQ)</h3><div class="tabla-scroll" style="max-height:520px"><table id="tablaExigidas"></table></div>
+      <h3 style="margin-top:18px">Violaciones de la lista PROHIBIDO</h3><div id="violaciones"></div></div>
+  </div>
+</section>
+
+<!-- ============================== TORNEO ============================== -->
+<section class="vista" id="v-torneo">
+  <h2>El torneo jugado</h2>
+  <p class="sub">Escenario pequeño (64 jugadores). Las tres implementaciones producen exactamente estas llaves.</p>
+  <div class="fila" style="margin-bottom:14px"><span class="nota">Ver la salida de:</span><select id="selLenguaje"></select></div>
+  <div class="grid g3">
+    <div class="card campeon-card" id="campeon"></div>
+    <div class="card" style="grid-column:span 2"><h3>Estadísticas por rango de Elo</h3><div id="gRangos"></div></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>Llaves de eliminación directa</h3><div class="llaves" id="llaves"></div></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card"><h3>Liga · tabla del grupo 1</h3><div class="tabla-scroll" style="max-height:460px"><table id="tablaLiga"></table></div></div>
+    <div class="card"><h3>Top 10 por Elo inicial</h3><table id="tablaTop"></table></div>
+  </div>
+</section>
+
+<!-- ============================== SENSIBILIDAD ============================== -->
+<section class="vista" id="v-sensibilidad">
+  <h2>Análisis de sensibilidad</h2>
+  <p class="sub">Cada peso se sube y se baja 5 puntos; la diferencia se reparte proporcionalmente entre los demás criterios.</p>
+  <div class="grid g3" id="kpiSens"></div>
+  <div class="card" style="margin-top:16px"><div class="tabla-scroll"><table id="tablaSens"></table></div></div>
+</section>
+
+<!-- ============================== METODOLOGÍA ============================== -->
+<section class="vista" id="v-metodo">
+  <h2>Metodología</h2>
+  <p class="sub">Cómo se obtiene cada número del ranking.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Proceso experimental</h3>
+      <div class="paso"><div class="num">1</div><div><b>Datos reproducibles.</b> <span class="nota">Generador con LCG y semilla fija: 64, 1.024, 16.384 y 131.072 jugadores (+1.000.000 opcional) y un escenario sucio.</span></div></div>
+      <div class="paso"><div class="num">2</div><div><b>Misma CLI en los 3 lenguajes.</b> <span class="mono">--input --mode all --runs --warmup --out</span></div></div>
+      <div class="paso"><div class="num">3</div><div><b>Calentamiento + mediciones.</b> <span class="nota">≥ 3 ejecuciones descartadas (JIT) y ≥ 10 medidas; se reporta mediana, media, desviación, mínimo y máximo.</span></div></div>
+      <div class="paso"><div class="num">4</div><div><b>Instrumentos reales.</b> <span class="nota">System.nanoTime (JVM), Stopwatch (.NET), MemoryMXBean / GC.GetTotalMemory y memoria pico del proceso medida desde afuera.</span></div></div>
+      <div class="paso"><div class="num">5</div><div><b>Equivalencia.</b> <span class="nota">SHA-256 de la salida normalizada; la referencia es el hash de la mayoría.</span></div></div>
+      <div class="paso"><div class="num">6</div><div><b>Clasificación automática.</b> <span class="nota">Normalización 0-100, ponderación, ranking, sensibilidad y exportes (CSV, JSON, Markdown, PNG).</span></div></div>
+    </div>
+    <div class="card">
+      <h3>Fórmulas</h3>
+      <span class="nota">Elo</span>
+      <code class="formula">E = 1 / (1 + 10^((Rb − Ra) / 400))     R' = R + 32 · (S − E)</code>
+      <span class="nota">Normalización min-max (tiempo y memoria: menos es mejor)</span>
+      <code class="formula">menos es mejor: 100 · (máx − x) / (máx − mín)
+más es mejor:  100 · (x − mín) / (máx − mín)</code>
+      <span class="nota">Puntaje total</span>
+      <code class="formula">Total = 0,25·Tiempo + 0,20·Memoria + 0,20·Rendimiento
+      + 0,15·Calidad + 0,10·Confiabilidad + 0,10·Funcional</code>
+      <span class="nota">Confiabilidad</span>
+      <code class="formula">0,4·%pruebas + 0,3·%errores bien manejados + 0,3·%hash coincidente</code>
+      <span class="nota">Calidad = promedio de: LOC relativo, complejidad ciclomática, anidamiento, % funcional, duplicación y efectos fuera de bordes. Uso funcional = 50 % ratio funcional + 50 % cumplimiento de las construcciones exigidas (Scala: cobertura de la tabla); −10 por cada término PROHIBIDO.</span>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px" id="entorno"></div>
+</section>
+</main>
+<div id="tip"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+let R = null;                 // ranking.json
+let pesosSim = null;
+const COLORES = {"Java":"#d95926","Scala":"#3987e5","C#":"#199e70"};
+const fmt = (x, d = 2) => x == null ? "—" : Number(x).toLocaleString("es-CO", {minimumFractionDigits: d, maximumFractionDigits: d});
+const fmt0 = x => fmt(x, 0);
+const chip = l => `<span class="chip"><i style="background:${COLORES[l]}"></i>${l}</span>`;
+const tip = $("#tip");
+function mostrarTip(e, html){ tip.innerHTML = html; tip.style.opacity = 1; tip.style.left = (e.clientX + 14) + "px"; tip.style.top = (e.clientY + 14) + "px"; }
+function ocultarTip(){ tip.style.opacity = 0; }
+
+// ------------------------------------------------------------ navegación
+$$("#nav button").forEach(b => b.onclick = () => {
+  $$("#nav button").forEach(x => x.classList.toggle("activo", x === b));
+  $$("section.vista").forEach(s => s.classList.toggle("activa", s.id === "v-" + b.dataset.v));
+});
+
+// ------------------------------------------------------------ gráficos SVG
+function svgEl(w, h){ return `<svg viewBox="0 0 ${w} ${h}" width="100%" style="max-height:${h}px;overflow:visible">`; }
+function escala(min, max, a, b, log){
+  if (log){ const lm = Math.log10(min), lM = Math.log10(max); return v => a + (Math.log10(Math.max(v, min)) - lm) / (lM - lm || 1) * (b - a); }
+  return v => a + (v - min) / (max - min || 1) * (b - a);
+}
+function ticksLog(min, max){ const t = []; for (let p = Math.floor(Math.log10(min)); p <= Math.ceil(Math.log10(max)); p++) t.push(10 ** p); return t; }
+function ticksLin(max){ const paso = 10 ** Math.floor(Math.log10(max || 1)); const n = max / paso; const s = n > 5 ? paso * 2 : n > 2.5 ? paso : paso / 2; const t = []; for (let v = 0; v <= max * 1.001; v += s) t.push(v); return t; }
+function abreviar(v){ return v >= 1e6 ? fmt(v / 1e6, 1) + " M" : v >= 1e3 ? fmt(v / 1e3, v >= 1e4 ? 0 : 1) + " k" : fmt(v, v < 10 ? 1 : 0); }
+
+function barrasAgrupadas(id, categorias, series, opt = {}){
+  const W = 640, H = 300, m = {l: 58, r: 10, t: 14, b: 44};
+  const valores = series.flatMap(s => s.valores).filter(v => v > 0);
+  const log = !!opt.log;
+  const max = Math.max(...valores) * (log ? 1.6 : 1.12), min = log ? Math.min(...valores) / 1.6 : 0;
+  const y = escala(min, max, H - m.b, m.t, log);
+  const ticks = log ? ticksLog(min, max).filter(t => t >= min && t <= max) : ticksLin(max);
+  const anchoCat = (W - m.l - m.r) / categorias.length, nb = series.length, gap = 2, ab = Math.min(30, (anchoCat * 0.72) / nb);
+  let s = svgEl(W, H);
+  ticks.forEach(t => s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="#33332f" stroke-width="1"/><text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end" font-size="11" fill="#8a8984">${abreviar(t)}</text>`);
+  categorias.forEach((c, i) => {
+    const x0 = m.l + i * anchoCat + (anchoCat - nb * ab) / 2;
+    series.forEach((se, k) => {
+      const v = se.valores[i]; if (!(v > 0)) return;
+      const x = x0 + k * ab, yy = y(v), h = (H - m.b) - yy;
+      s += `<path d="M${x + gap / 2},${H - m.b} V${yy + 4} q0,-4 4,-4 h${ab - gap - 8} q4,0 4,4 V${H - m.b} Z" fill="${COLORES[se.nombre]}" data-t="${se.nombre}|${c.replace(/\n/g, " ")}|${(opt.fmt || fmt)(v)} ${opt.unidad || ""}"/>`;
+      s += `<rect x="${x}" y="${m.t}" width="${ab}" height="${H - m.b - m.t}" fill="transparent" data-t="${se.nombre}|${c.replace(/\n/g, " ")}|${(opt.fmt || fmt)(v)} ${opt.unidad || ""}"/>`;
+    });
+    c.split("\n").forEach((linea, j) => s += `<text x="${m.l + i * anchoCat + anchoCat / 2}" y="${H - m.b + 17 + j * 14}" text-anchor="middle" font-size="${j ? 10.5 : 12}" fill="${j ? '#8a8984' : '#c3c2b7'}">${linea}</text>`);
+  });
+  s += `<line x1="${m.l}" x2="${W - m.r}" y1="${H - m.b}" y2="${H - m.b}" stroke="#5f5e5a"/></svg>`;
+  $(id).innerHTML = s;
+  conectarTips(id);
+}
+function conectarTips(id){
+  $(id).querySelectorAll("[data-t]").forEach(el => {
+    el.addEventListener("mousemove", e => { const [l, c, v] = el.dataset.t.split("|"); mostrarTip(e, `${chip(l)}<div class="nota">${c}</div><b>${v}</b>`); });
+    el.addEventListener("mouseleave", ocultarTip);
+  });
+}
+function lineas(id, xs, series, opt = {}){
+  const W = 640, H = 300, m = {l: 58, r: 60, t: 14, b: 40};
+  const ys = series.flatMap(s => s.valores);
+  const x = escala(Math.min(...xs), Math.max(...xs), m.l, W - m.r, true);
+  const yMin = Math.min(...ys) / 1.5, yMax = Math.max(...ys) * 1.5, y = escala(yMin, yMax, H - m.b, m.t, true);
+  let s = svgEl(W, H);
+  ticksLog(yMin, yMax).filter(t => t >= yMin && t <= yMax).forEach(t => s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="#33332f"/><text x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end" font-size="11" fill="#8a8984">${abreviar(t)} ms</text>`);
+  xs.forEach(v => s += `<text x="${x(v)}" y="${H - m.b + 18}" text-anchor="middle" font-size="11" fill="#8a8984">${abreviar(v)}</text>`);
+  s += `<text x="${(m.l + W - m.r) / 2}" y="${H - 4}" text-anchor="middle" font-size="11" fill="#8a8984">jugadores (escala logarítmica en ambos ejes)</text>`;
+  series.forEach(se => {
+    const pts = se.valores.map((v, i) => `${x(xs[i])},${y(v)}`).join(" ");
+    s += `<polyline points="${pts}" fill="none" stroke="${COLORES[se.nombre]}" stroke-width="2"/>`;
+    se.valores.forEach((v, i) => s += `<circle cx="${x(xs[i])}" cy="${y(v)}" r="5" fill="${COLORES[se.nombre]}" stroke="#1a1a19" stroke-width="2" data-t="${se.nombre}|${fmt0(xs[i])} jugadores|${fmt(v)} ms"/><circle cx="${x(xs[i])}" cy="${y(v)}" r="12" fill="transparent" data-t="${se.nombre}|${fmt0(xs[i])} jugadores|${fmt(v)} ms"/>`);
+    const u = se.valores.length - 1;
+    s += `<text x="${x(xs[u]) + 10}" y="${y(se.valores[u]) + 4}" font-size="12" fill="#c3c2b7">${se.nombre}</text>`;
+  });
+  $(id).innerHTML = s + "</svg>";
+  conectarTips(id);
+}
+function radar(id, criterios, nombres, series){
+  const W = 520, H = 400, cx = W / 2, cy = H / 2 + 6, rad = 140, n = criterios.length;
+  const p = (i, v) => [cx + Math.sin(2 * Math.PI * i / n) * rad * v / 100, cy - Math.cos(2 * Math.PI * i / n) * rad * v / 100];
+  let s = svgEl(W, H);
+  [25, 50, 75, 100].forEach(r => s += `<polygon points="${criterios.map((_, i) => p(i, r).join(",")).join(" ")}" fill="none" stroke="#33332f"/>`);
+  criterios.forEach((c, i) => { const [x, y] = p(i, 100); const [lx, ly] = p(i, 122);
+    s += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#33332f"/><text x="${lx}" y="${ly}" text-anchor="middle" font-size="11.5" fill="#c3c2b7">${nombres[c]}</text>`; });
+  series.forEach(se => {
+    s += `<polygon points="${se.valores.map((v, i) => p(i, v).join(",")).join(" ")}" fill="${COLORES[se.nombre]}" fill-opacity=".10" stroke="${COLORES[se.nombre]}" stroke-width="2"/>`;
+    se.valores.forEach((v, i) => { const [x, y] = p(i, v); s += `<circle cx="${x}" cy="${y}" r="4.5" fill="${COLORES[se.nombre]}" stroke="#1a1a19" stroke-width="2" data-t="${se.nombre}|${nombres[criterios[i]]}|${fmt(v)} / 100"/>`; });
+  });
+  $(id).innerHTML = s + "</svg>";
+  conectarTips(id);
+}
+function leyendas(lenguajes){ $$("[data-ley]").forEach(d => d.innerHTML = lenguajes.map(chip).join("")); }
+
+// ------------------------------------------------------------ render de resultados
+function render(){
+  const L = Object.keys(R.lenguajes);
+  leyendas(L);
+  const crit = Object.keys(R.pesos);
+  $("#rankingSub").textContent = `Generado ${R.generado} · normalización ${R.metodo} · ${R.escenarios.length} escenarios de rendimiento`;
+  const g = R.ranking[0];
+  $("#ganador").innerHTML = `<div class="ganador"><span class="corona">🏆</span><div><div class="nota">Ganador determinado automáticamente</div><b>${g.lenguaje}</b> con ${fmt(g.total)} puntos · margen de ${fmt(R.sensibilidad.margen)} sobre ${R.ranking[1].lenguaje} · ${R.sensibilidad.ganadorCambia ? "el ganador cambia en algún escenario de pesos ±5 %" : "el ganador NO cambia con pesos ±5 %"}</div></div>`;
+  const orden = [R.ranking[1], R.ranking[0], R.ranking[2]];
+  $("#podio").innerHTML = orden.map(f => `<div class="puesto p${f.posicion}" style="--c:${COLORES[f.lenguaje]};--h:${[0, 120, 80, 50][f.posicion]}px">
+     ${f.posicion === 1 ? '<div class="corona">👑</div>' : ''}<div class="medalla">${f.posicion}.º LUGAR</div><div class="nombre">${f.lenguaje}</div><div class="total">${fmt(f.total)}</div><div class="nota">puntos ponderados</div><div class="base"></div></div>`).join("");
+  radar("#radar", crit, R.nombresCriterios, L.map(l => ({nombre: l, valores: crit.map(c => R.criterios[c][l].normalizado)})));
+  // tabla ranking
+  let t = `<thead><tr><th>Criterio</th><th>Peso</th>${L.map(l => `<th colspan="3" style="text-align:center">${chip(l)}</th>`).join("")}</tr>
+           <tr><th></th><th></th>${L.map(() => `<th>Cruda</th><th>Norm.</th><th>Pond.</th>`).join("")}</tr></thead><tbody>`;
+  crit.forEach(c => { t += `<tr><td>${R.nombresCriterios[c]}<div class="nota">${R.unidades[c]}</div></td><td>${R.pesos[c]} %</td>` +
+    L.map(l => { const d = R.criterios[c][l]; return `<td>${fmt(d.crudo)}</td><td>${fmt(d.normalizado)}</td><td><b>${fmt(d.ponderado)}</b></td>`; }).join("") + "</tr>"; });
+  const tot = Object.fromEntries(R.ranking.map(f => [f.lenguaje, f]));
+  t += `<tr><td><b>TOTAL</b></td><td>100 %</td>${L.map(l => `<td colspan="3" style="text-align:center"><b style="font-size:16px;color:${COLORES[l]}">${fmt(tot[l].total)}</b> · ${tot[l].posicion}.º</td>`).join("")}</tr></tbody>`;
+  $("#tablaRanking").innerHTML = t;
+  pesosSim = {...R.pesos}; renderSliders();
+
+  // rendimiento
+  const E = R.escenarios.map(e => e.nombre), cats = R.escenarios.map(e => `${e.nombre}\n${fmt0(e.jugadores)} jug.`);
+  const serie = clave => L.map(l => ({nombre: l, valores: E.map(e => R.porEscenario[e][l][clave])}));
+  barrasAgrupadas("#gTiempo", cats, serie("tiempoMs"), {log: true, unidad: "ms"});
+  barrasAgrupadas("#gMemoria", cats, serie("memoriaMB"), {unidad: "MB"});
+  barrasAgrupadas("#gThroughput", cats, serie("partidasPorSeg"), {log: true, unidad: "partidas/s", fmt: fmt0});
+  lineas("#gEscala", R.escenarios.map(e => e.jugadores), serie("tiempoMs"));
+  $("#selFase").innerHTML = E.map(e => `<option ${e === E[E.length - 1] ? "selected" : ""}>${e}</option>`).join("");
+  const fases = () => { const e = $("#selFase").value, F = ["carga", "matchmaking", "eliminacion", "liga", "estadisticas"];
+    barrasAgrupadas("#gFases", F, L.map(l => ({nombre: l, valores: F.map(f => R.porEscenario[e][l].fasesMs[f])})), {log: true, unidad: "ms"}); };
+  $("#selFase").onchange = fases; fases();
+  let te = `<thead><tr><th>Escenario</th><th>Lenguaje</th><th>Mediana ms</th><th>Media ms</th><th>Desv. ms</th><th>Mín ms</th><th>Máx ms</th><th>Memoria MB</th><th>Heap MB</th><th>Partidas/s</th><th>Jugadores/s</th><th>Runs</th></tr></thead><tbody>`;
+  E.forEach(e => L.forEach(l => { const d = R.porEscenario[e][l];
+    te += `<tr><td>${e}</td><td class="izq">${chip(l)}</td><td><b>${fmt(d.tiempoMs)}</b></td><td>${fmt(d.mediaMs)}</td><td>${fmt(d.desviacionMs)}</td><td>${fmt(d.minMs)}</td><td>${fmt(d.maxMs)}</td><td>${fmt(d.memoriaMB)}</td><td>${fmt(d.heapMB)}</td><td>${fmt0(d.partidasPorSeg)}</td><td>${fmt0(d.jugadoresPorSeg)}</td><td>${d.runs}+${d.warmup}</td></tr>`; }));
+  $("#tablaEsc").innerHTML = te + "</tbody>";
+
+  // equivalencia
+  const eqs = Object.entries(R.equivalencia), iguales = eqs.filter(([, q]) => Object.values(q.coinciden).every(Boolean)).length;
+  $("#kpiEq").innerHTML = `<div class="card kpi"><div class="l">Escenarios con hash idéntico</div><div class="v" style="color:${iguales === eqs.length ? '#62c462' : 'var(--bad)'}">${iguales} / ${eqs.length}</div><div class="d">incluye datos sucios, 1 jugador y archivo inexistente</div></div>` +
+    L.map(l => `<div class="card kpi"><div class="l">${l} · coincidencia</div><div class="v" style="color:${COLORES[l]}">${fmt(R.confiabilidad[l].pctHash, 0)} %</div><div class="d">errores esperados: ${R.confiabilidad[l].chequeosErrores} · invariantes ${Object.values(R.porEscenario).every(x => x[l].invariantesOk) ? "OK" : "con fallas"}</div></div>`).slice(0, 2).join("");
+  let tq = `<thead><tr><th>Escenario</th>${L.map(l => `<th class="izq">${chip(l)}</th>`).join("")}<th>Resultado</th></tr></thead><tbody>`;
+  eqs.forEach(([e, q]) => tq += `<tr><td>${e}</td>${L.map(l => `<td class="izq mono" style="color:${q.coinciden[l] ? 'var(--text)' : 'var(--bad)'}">${(q.hashes[l] || "—").slice(0, 20)}…</td>`).join("")}<td>${Object.values(q.coinciden).every(Boolean) ? '<span class="etq ok">✓ idénticos</span>' : '<span class="etq mal">✗ difieren</span>'}</td></tr>`);
+  $("#tablaEq").innerHTML = tq + "</tbody>";
+
+  // calidad
+  const es = R.escaneoScala;
+  $("#kpiScala").innerHTML = [
+    ["Violaciones PROHIBIDO (Scala)", es.totalViolaciones, es.totalViolaciones ? "var(--bad)" : "#62c462", "debe ser 0 · fuentes y pruebas"],
+    ["Cobertura de la tabla", `${es.construccionesUsadas}/${es.construccionesTabla}`, "var(--scala)", fmt(es.porcentajeCobertura, 0) + " % de las construcciones"],
+    ...L.filter(l => l !== "Scala").map(l => [`Cumplimiento ${l}`, fmt(R.calidad[l].cumplimiento, 0) + " %", COLORES[l], l === "Java" ? "Streams y construcciones exigidas" : "LINQ y construcciones exigidas"])
+  ].map(([l, v, c, d]) => `<div class="card kpi"><div class="l">${l}</div><div class="v" style="color:${c}">${v}</div><div class="d">${d}</div></div>`).join("");
+  const filasCal = [["Líneas de código (LOC)", "loc", fmt0], ["Funciones / métodos", "funciones", fmt0], ["Complejidad ciclomática promedio", "complejidadPromedio", fmt], ["Profundidad máxima de anidamiento", "profundidadMaxima", fmt0],
+    ["Operaciones funcionales", "operacionesFuncionales", fmt0], ["Lambdas", "lambdas", fmt0], ["Construcciones imperativas", "construccionesImperativas", fmt0], ["% funcional", "ratioFuncional", fmt],
+    ["% duplicación", "duplicacionPct", fmt], ["Efectos fuera de los bordes", "efectosFueraDeBordes", fmt0], ["Puntaje CALIDAD (0-100)", "puntajeCalidad", fmt], ["Puntaje USO FUNCIONAL (0-100)", "puntajeFuncional", fmt]];
+  $("#tablaCalidad").innerHTML = `<thead><tr><th>Métrica</th>${L.map(l => `<th>${chip(l)}</th>`).join("")}</tr></thead><tbody>` +
+    filasCal.map(([n, k, f]) => `<tr><td>${k.startsWith("puntaje") ? "<b>" + n + "</b>" : n}</td>${L.map(l => `<td>${k.startsWith("puntaje") ? "<b>" + f(R.calidad[l][k]) + "</b>" : f(R.calidad[l][k])}</td>`).join("")}</tr>`).join("") + "</tbody>";
+  $("#tablaCobertura").innerHTML = `<thead><tr><th>#</th><th class="izq">Construcción</th><th>Usos</th><th class="izq">Dónde (archivo:línea)</th></tr></thead><tbody>` +
+    Object.entries(es.cobertura).map(([c, d], i) => `<tr><td>${i + 1}</td><td class="izq"><span class="mono">${c}</span></td><td>${d.usos ? d.usos : '<span class="etq mal">0</span>'}</td><td class="izq mono" style="font-size:11px;color:var(--muted)">${d.ubicaciones.slice(0, 2).map(u => u.replace("scala/src/main/scala/torneos/", "")).join(", ")}</td></tr>`).join("") + "</tbody>";
+  const ex = ["Java", "C#"].flatMap(l => Object.entries(R.calidad[l].exigidas || {}).map(([c, ok]) => [l, c, ok]));
+  $("#tablaExigidas").innerHTML = `<thead><tr><th class="izq">Lenguaje</th><th class="izq">Construcción</th><th>Presente</th></tr></thead><tbody>` +
+    ex.map(([l, c, ok]) => `<tr><td class="izq">${chip(l)}</td><td class="izq mono">${c}</td><td>${ok ? '<span class="etq ok">✓</span>' : '<span class="etq mal">✗</span>'}</td></tr>`).join("") + "</tbody>";
+  $("#violaciones").innerHTML = es.violaciones.length ? `<table>${es.violaciones.map(v => `<tr><td class="izq mono">${v.archivo}:${v.linea}</td><td class="izq"><span class="etq mal">${v.termino}</span></td></tr>`).join("")}</table>`
+    : `<p class="nota">✅ Ninguna. El escáner revisa cada token del código Scala (sin comentarios ni textos) contra los ${36} términos prohibidos y contra otros métodos de colecciones fuera de la tabla.</p>`;
+
+  // sensibilidad
+  const S = R.sensibilidad;
+  $("#kpiSens").innerHTML = `<div class="card kpi"><div class="l">¿Cambia el ganador con ±5 %?</div><div class="v" style="color:${S.ganadorCambia ? 'var(--bad)' : '#62c462'}">${S.ganadorCambia ? "Sí" : "No"}</div><div class="d">${S.variaciones.filter(v => v.cambia).length} de ${S.variaciones.length} variaciones cambian al ganador</div></div>
+    <div class="card kpi"><div class="l">Margen 1.º − 2.º</div><div class="v">${fmt(S.margen)}</div><div class="d">puntos ponderados</div></div>
+    <div class="card kpi"><div class="l">Con normalización ${S.metodoAlterno}</div><div class="v" style="color:${COLORES[S.ganadorMetodoAlterno]}">${S.ganadorMetodoAlterno}</div><div class="d">${L.map(l => l + " " + fmt(S.totalesMetodoAlterno[l], 1)).join(" · ")}</div></div>`;
+  $("#tablaSens").innerHTML = `<thead><tr><th>Criterio</th><th>Variación</th>${L.map(l => `<th>${chip(l)}</th>`).join("")}<th>Ganador</th></tr></thead><tbody>` +
+    S.variaciones.map(v => `<tr><td>${R.nombresCriterios[v.criterio]}</td><td>${v.delta > 0 ? "+" : ""}${v.delta} pts → ${fmt(v.pesos[v.criterio], 0)} %</td>${L.map(l => `<td>${fmt(v.totales[l])}</td>`).join("")}<td>${chip(v.ganador)} ${v.cambia ? '<span class="etq mal">cambia</span>' : ''}</td></tr>`).join("") + "</tbody>";
+
+  // entorno
+  const ent = R.entorno || {};
+  $("#entorno").innerHTML = `<h3>Entorno de la medición</h3><table>${Object.entries(ent).map(([k, v]) => `<tr><td>${k}</td><td class="izq mono">${v}</td></tr>`).join("")}</table>
+    <p class="nota">Pruebas unitarias: ${L.map(l => `${l} ${R.pruebas[l]?.aprobadas ?? "?"}/${R.pruebas[l]?.total ?? "?"}`).join(" · ")}${R.pruebas.Java?.fuente && R.pruebas.Java.fuente !== "framework" ? " — " + R.pruebas.Java.fuente : ""}.</p>`;
+
+  $("#selLenguaje").innerHTML = L.map(l => `<option>${l}</option>`).join("");
+  $("#selLenguaje").onchange = cargarTorneo; cargarTorneo();
+}
+
+function renderSliders(){
+  const crit = Object.keys(R.pesos);
+  $("#sliders").innerHTML = crit.map(c => `<div class="slider"><span>${R.nombresCriterios[c]}</span><input type="range" min="0" max="50" value="${pesosSim[c]}" data-c="${c}"><b>${pesosSim[c]}</b></div>`).join("");
+  $$("#sliders input").forEach(i => i.oninput = () => { pesosSim[i.dataset.c] = +i.value; i.nextElementSibling.textContent = i.value; simular(); });
+  simular();
+}
+function simular(){
+  const L = Object.keys(R.lenguajes), suma = Object.values(pesosSim).reduce((a, b) => a + b, 0) || 1;
+  const tot = Object.fromEntries(L.map(l => [l, Object.keys(pesosSim).reduce((a, c) => a + R.criterios[c][l].normalizado * pesosSim[c] / suma, 0)]));
+  const g = L.reduce((a, b) => tot[a] >= tot[b] ? a : b);
+  $("#simGanador").innerHTML = `Suma ${suma} → ganador simulado: ${chip(g)} · ${L.map(l => l + " " + fmt(tot[l], 1)).join(" · ")}`;
+}
+$("#btnPesos").onclick = () => { pesosSim = {...R.pesos}; renderSliders(); };
+
+async function cargarTorneo(){
+  const l = $("#selLenguaje").value, archivo = {"Java": "Java", "Scala": "Scala", "C#": "CSharp"}[l];
+  let d;
+  try { d = await (await fetch(`/resultados/crudos/${archivo}_pequeno.json`)).json(); } catch { $("#llaves").innerHTML = '<div class="vacio">Ejecuta el benchmark para ver el torneo.</div>'; return; }
+  const res = d.resultado, por = Object.fromEntries(res.participantes.map(j => [j.id, j]));
+  const nombre = id => (por[id]?.nombre || ("#" + id));
+  const c = res.campeon;
+  $("#campeon").innerHTML = c ? `<div class="corona">🏆</div><div class="nota">CAMPEÓN · ${res.rondas} rondas</div><div class="n">${c.nombre}</div><div class="nota">id ${c.id} · Elo final <b style="color:var(--gold)">${c.elo}</b> · ${c.victorias} victorias</div><div class="nota mono" style="margin-top:10px">hash ${d.hashSalida.slice(0, 16)}…</div>` : '<div class="vacio">Sin campeón</div>';
+  $("#llaves").innerHTML = res.llaves.map((ronda, i) => `<div class="ronda"><h4>${["Ronda de 64", "Ronda de 32", "Octavos", "Cuartos", "Semifinal", "Final"][i] || "Ronda " + (i + 1)}</h4><div class="partidos">${
+    ronda.map(p => `<div class="partido"><div class="${p.ganador === p.a ? 'gana' : ''}"><span>${nombre(p.a)}</span><span class="elo">${por[p.a]?.elo ?? ""}</span></div><div class="${p.ganador === p.b ? 'gana' : ''}"><span>${nombre(p.b)}</span><span class="elo">${por[p.b]?.elo ?? ""}</span></div></div>`).join("")}</div></div>`).join("");
+  $("#tablaLiga").innerHTML = `<thead><tr><th>#</th><th class="izq">Jugador</th><th>Pts</th><th>V</th><th>E</th><th>D</th><th>Elo final</th></tr></thead><tbody>` +
+    res.tablaG1.map((j, i) => `<tr><td>${i + 1}</td><td class="izq">${i === 0 ? "🥇 " : ""}${j.nombre}</td><td><b>${j.puntos}</b></td><td>${j.victorias}</td><td>${j.empates}</td><td>${j.derrotas}</td><td class="mono">${j.elo}</td></tr>`).join("") + "</tbody>";
+  $("#tablaTop").innerHTML = `<thead><tr><th>#</th><th class="izq">Jugador</th><th>Elo</th></tr></thead><tbody>` + res.top10.map((j, i) => `<tr><td>${i + 1}</td><td class="izq">${j.nombre}</td><td class="mono">${j.elo}</td></tr>`).join("") + "</tbody>";
+  const rangos = res.estadisticas;
+  const W = 640, H = 210, max = Math.max(...rangos.map(r => r.cantidad)) || 1;
+  const coloresRango = {"BRONCE": "#b07a4a", "PLATA": "#9aa3ad", "ORO": "#eda100", "PLATINO": "#7fd1d6"};
+  $("#gRangos").innerHTML = svgEl(W, H) + rangos.map((r, i) => { const w = (W - 230) * r.cantidad / max, y = 14 + i * 48;
+    return `<text x="0" y="${y + 18}" font-size="13" font-weight="600" fill="#f0efec">${r.rango}</text><rect x="90" y="${y}" width="${Math.max(w, 2)}" height="28" rx="4" fill="${coloresRango[r.rango]}" data-t="${l}|${r.rango}|${r.cantidad} jugadores · Elo prom. ${r.promedioElo} · ${r.victorias} victorias"/>
+      <text x="${100 + w}" y="${y + 18}" font-size="12" fill="#c3c2b7">${r.cantidad} jug. · prom. ${r.promedioElo} · ${r.victorias} V en liga</text>`; }).join("") + "</svg>";
+  conectarTips("#gRangos");
+}
+
+// ------------------------------------------------------------ estado y acciones
+let ultimoLog = 0, estabaEjecutando = false;
+async function sondear(){
+  try {
+    const e = await (await fetch("/api/estado")).json();
+    $("#dot").classList.toggle("on", e.ejecutando);
+    $("#etapa").textContent = e.ejecutando ? e.etapa : (e.hayResultados ? "Resultados listos" : "Sin resultados aún");
+    $("#etapa2").textContent = e.etapa; $("#pct").textContent = Math.round(e.progreso) + " %"; $("#barra").style.width = e.progreso + "%";
+    ["#btnEjecutar", "#btnGenerar", "#btnConsolidar"].forEach(b => $(b).disabled = e.ejecutando);
+    $("#herramientas").innerHTML = Object.entries(e.herramientas).map(([h, ok]) => `<div class="herr"><span class="mono">${h}</span><b class="${ok ? 'si' : 'no'}">${ok ? "✓ disponible" : "— no encontrado"}</b></div>`).join("");
+    if (!$("#escenarios").dataset.listo){
+      $("#escenarios").innerHTML = Object.entries(e.escenarios).filter(([k]) => !["sucio", "minimo"].includes(k)).map(([k, ok]) => `<label class="chk"><input type="checkbox" value="${k}" ${k !== "extremo" ? "checked" : ""}> ${k}${ok ? "" : " <span class='nota'>(se genera)</span>"}</label>`).join("");
+      $("#escenarios").dataset.listo = 1;
+    }
+    if (e.log.length){
+      $("#consola").innerHTML = e.log.map(l => l.replace(/&/g, "&amp;").replace(/</g, "&lt;")).map(l => l.includes("■") ? `<span class="sec">${l}</span>` : /ERROR|FALL|⚠/.test(l) ? `<span class="err">${l}</span>` : /🏆|OK|aprobadas/.test(l) ? `<span class="ok">${l}</span>` : l).join("\n");
+      if (e.log.length !== ultimoLog){ $("#consola").scrollTop = 1e9; ultimoLog = e.log.length; }
+    }
+    if (estabaEjecutando && !e.ejecutando) cargarResultados();
+    estabaEjecutando = e.ejecutando;
+  } catch { $("#etapa").textContent = "Sin conexión con el orquestador"; }
+}
+async function post(url, cuerpo){ await fetch(url, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(cuerpo || {})}); sondear(); }
+$("#btnEjecutar").onclick = () => {
+  const escenarios = $$("#escenarios input:checked").map(i => i.value);
+  post("/api/ejecutar", {runs: +$("#runs").value, warmup: +$("#warmup").value, escenarios: escenarios.filter(e => e !== "extremo"), extremo: escenarios.includes("extremo"), pruebas: $("#pruebas").checked, metodo: $("#metodo").value});
+};
+$("#btnGenerar").onclick = () => post("/api/generar", {extremo: $$("#escenarios input:checked").some(i => i.value === "extremo")});
+$("#btnConsolidar").onclick = () => post("/api/consolidar", {metodo: $("#metodo").value});
+
+async function cargarResultados(){
+  try { R = await (await fetch("/resultados/ranking.json?" + Date.now())).json(); render(); }
+  catch { $$("section.vista:not(#v-panel):not(#v-metodo)").forEach(s => { if (!s.querySelector(".vacio")) s.insertAdjacentHTML("afterbegin", '<div class="card vacio">Todavía no hay resultados: ve al Panel de control y pulsa “Ejecutar todo”.</div>'); }); }
+}
+cargarResultados(); sondear(); setInterval(sondear, 1500);
+</script>
+</body>
+</html>

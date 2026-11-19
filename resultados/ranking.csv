@@ -1,0 +1,19 @@
+posicion,lenguaje,criterio,peso,metrica_cruda,unidad,normalizado_0_100,ponderado,total
+1,Java,tiempo,25,75.771,ms (media geométrica de medianas),75.0,18.75,75.61
+1,Java,memoria,20,387.956,MB pico RSS (media geométrica),39.54,7.91,75.61
+1,Java,rendimiento,20,1477162.427,partidas/s (media geométrica),75.0,15.0,75.61
+1,Java,calidad,15,93.04,puntaje reglas 0-100,93.04,13.96,75.61
+1,Java,confiabilidad,10,100.0,puntaje reglas 0-100,100.0,10.0,75.61
+1,Java,funcional,10,100.0,puntaje reglas 0-100,100.0,10.0,75.61
+2,C#,tiempo,25,72.679,ms (media geométrica de medianas),28.98,7.25,67.65
+2,C#,memoria,20,144.534,MB pico RSS (media geométrica),100.0,20.0,67.65
+2,C#,rendimiento,20,1540004.015,partidas/s (media geométrica),27.65,5.53,67.65
+2,C#,calidad,15,99.17,puntaje reglas 0-100,99.17,14.88,67.65
+2,C#,confiabilidad,10,100.0,puntaje reglas 0-100,100.0,10.0,67.65
+2,C#,funcional,10,100.0,puntaje reglas 0-100,100.0,10.0,67.65
+3,Scala,tiempo,25,96.967,ms (media geométrica de medianas),12.34,3.08,37.86
+3,Scala,memoria,20,525.054,MB pico RSS (media geométrica),0.0,0.0,37.86
+3,Scala,rendimiento,20,1154260.901,partidas/s (media geométrica),7.9,1.58,37.86
+3,Scala,calidad,15,91.99,puntaje reglas 0-100,91.99,13.8,37.86
+3,Scala,confiabilidad,10,100.0,puntaje reglas 0-100,100.0,10.0,37.86
+3,Scala,funcional,10,93.92,puntaje reglas 0-100,93.92,9.39,37.86

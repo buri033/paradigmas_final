@@ -1,0 +1,16 @@
+{
+  "sistema": "Linux 6.18.44-fc-v553",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "nucleosLogicos": 2,
+  "ramGB": 7.8,
+  "python": "3.13.18",
+  "java": "openjdk version \"21.0.12.1\" 2026-08-18",
+  "maven": "no disponible (se compiló con javac)",
+  "sbt": "no disponible (se compiló con scalac)",
+  "dotnet": "8.0.134",
+  "flagsJVM": "-Xms256m -Xmx3g -XX:+UseG1GC",
+  "modoDotnet": "Release (dotnet build -c Release), InvariantGlobalization, TieredPGO",
+  "fecha": "2026-11-17 00:24",
+  "scala": "2.13.16 (compilado con scalac; sbt usa 2.13.14)",
+  "notas": "Servidor sin acceso a Maven Central/NuGet: Java con javac, Scala con scalac 2.13, C# con dotnet build -c Release; pruebas con un ejecutor mínimo compatible con JUnit/MUnit/xUnit"
+}

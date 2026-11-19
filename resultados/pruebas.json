@@ -1,0 +1,17 @@
+{
+  "Java": {
+    "total": 23,
+    "aprobadas": 23,
+    "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+  },
+  "Scala": {
+    "total": 23,
+    "aprobadas": 23,
+    "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+  },
+  "C#": {
+    "total": 23,
+    "aprobadas": 23,
+    "fuente": "ejecutor mínimo compatible (JUnit/MUnit/xUnit no descargables en el servidor de referencia); en su PC: mvn test, sbt test y dotnet test"
+  }
+}

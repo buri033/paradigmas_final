@@ -1,0 +1,19 @@
+{
+  "lenguaje": "Scala",
+  "version": "Scala 2.13.16 (Java 21.0.12.1)",
+  "entrada": "/home/claude/proyecto-final/datos/escenarios/minimo.csv",
+  "modo": "all",
+  "semilla": 20261117,
+  "warmup": 0,
+  "runs": 1,
+  "tiemposMs": {"carga": [9.1898], "matchmaking": [11.6837], "eliminacion": [1.4135], "liga": [1.2295], "estadisticas": [15.6235], "total": [45.1189]},
+  "resumenMs": {"carga": {"mediana": 9.1898, "media": 9.1898, "desviacion": 0.0000, "min": 9.1898, "max": 9.1898}, "matchmaking": {"mediana": 11.6837, "media": 11.6837, "desviacion": 0.0000, "min": 11.6837, "max": 11.6837}, "eliminacion": {"mediana": 1.4135, "media": 1.4135, "desviacion": 0.0000, "min": 1.4135, "max": 1.4135}, "liga": {"mediana": 1.2295, "media": 1.2295, "desviacion": 0.0000, "min": 1.2295, "max": 1.2295}, "estadisticas": {"mediana": 15.6235, "media": 15.6235, "desviacion": 0.0000, "min": 15.6235, "max": 15.6235}, "total": {"mediana": 45.1189, "media": 45.1189, "desviacion": 0.0000, "min": 45.1189, "max": 45.1189}},
+  "memoria": {"picoHeapMB": 5.6789, "picoProcesoMB": 68.7188},
+  "throughput": {"partidasPorSeg": 0.0000, "jugadoresPorSeg": 22.1637},
+  "conteos": {"jugadoresValidos": 1, "partidasEliminacion": 0, "partidasLiga": 0},
+  "errores": {"total": 3, "porTipo": {"LINEA_MALFORMADA": 1, "ELO_INVALIDO": 0, "ID_DUPLICADO": 0, "ARCHIVO_INEXISTENTE": 0, "TORNEO_INSUFICIENTE": 2}, "detalle": [{"tipo": "LINEA_MALFORMADA", "mensaje": "Linea 3: se esperaban 3 campos y hay 1"}, {"tipo": "TORNEO_INSUFICIENTE", "mensaje": "Eliminacion directa: se requieren al menos 2 jugadores (hay 1)"}, {"tipo": "TORNEO_INSUFICIENTE", "mensaje": "Liga: se requieren al menos 2 jugadores (hay 1)"}]},
+  "resultado": {"campeon": null, "rondas": 0, "gruposLiga": 0, "tablaG1": [], "top10": [{"id": 1, "nombre": "Solitario_0000001", "elo": "1500.00", "puntos": 0, "victorias": 0, "empates": 0, "derrotas": 0}], "estadisticas": [{"rango": "BRONCE", "cantidad": 0, "promedioElo": "0.00", "victorias": 0}, {"rango": "PLATA", "cantidad": 0, "promedioElo": "0.00", "victorias": 0}, {"rango": "ORO", "cantidad": 1, "promedioElo": "1500.00", "victorias": 0}, {"rango": "PLATINO", "cantidad": 0, "promedioElo": "0.00", "victorias": 0}], "participantes": [{"id": 1, "nombre": "Solitario_0000001", "elo": "1500.00", "puntos": 0, "victorias": 0, "empates": 0, "derrotas": 0}], "llaves": []},
+  "invariantesOk": true,
+  "salidaNormalizada": "VALIDOS=1\nERRORES=3\nERRORES_TIPO=LINEA_MALFORMADA:1;ELO_INVALIDO:0;ID_DUPLICADO:0;ARCHIVO_INEXISTENTE:0;TORNEO_INSUFICIENTE:2\nPAREJAS=0;BYES=1\nELIM=RONDAS:0;PARTIDAS:0;CAMPEON:0;ELO:0.00\nLIGA=GRUPOS:0;PARTIDAS:0\nTABLA_G1=\nLIDERES=\nCHECK_ELIM=0\nCHECK_LIGA=0\nSTATS=BRONCE:0:0.00:0;PLATA:0:0.00:0;ORO:1:1500.00:0;PLATINO:0:0.00:0\nTOP10=1:1500.00\nMAS_VICTORIAS=0:0\n",
+  "hashSalida": "5b6410dcbbab542417444ef2602effa561d3315b40ac0f4e471c983946b82885"
+}

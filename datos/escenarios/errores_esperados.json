@@ -1,0 +1,35 @@
+{
+  "sucio": {
+    "validos": 999,
+    "porTipo": {
+      "LINEA_MALFORMADA": 12,
+      "ELO_INVALIDO": 10,
+      "ID_DUPLICADO": 8,
+      "ARCHIVO_INEXISTENTE": 0,
+      "TORNEO_INSUFICIENTE": 0
+    },
+    "total": 30
+  },
+  "minimo": {
+    "validos": 1,
+    "porTipo": {
+      "LINEA_MALFORMADA": 1,
+      "ELO_INVALIDO": 0,
+      "ID_DUPLICADO": 0,
+      "ARCHIVO_INEXISTENTE": 0,
+      "TORNEO_INSUFICIENTE": 2
+    },
+    "total": 3
+  },
+  "inexistente": {
+    "validos": 0,
+    "porTipo": {
+      "LINEA_MALFORMADA": 0,
+      "ELO_INVALIDO": 0,
+      "ID_DUPLICADO": 0,
+      "ARCHIVO_INEXISTENTE": 1,
+      "TORNEO_INSUFICIENTE": 2
+    },
+    "total": 3
+  }
+}
